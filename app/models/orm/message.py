@@ -8,6 +8,3 @@ class MessageModel(db.Model):
     phone_number = db.Column(db.String(15), unique=False, nullable=False)
     content = db.Column(db.Text, nullable=False)
     sent_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return f'<Message {self.id}>'
