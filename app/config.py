@@ -6,9 +6,9 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class WHATSAPP_API:
-    TOKEN = "Bearer " #+ os.environ.get('WHATSAPP_TOKEN')
+    TOKEN = "Bearer " + os.environ.get('WHATSAPP_TOKEN')
     URL = 'graph.facebook.com'
-    NUMBER_ID = "Bearer "#os.environ.get('NUMBER_ID') 
-    VERSION = "Bearer "#os.environ.get('VERSION')
+    NUMBER_ID = os.environ.get('NUMBER_ID') 
+    VERSION = os.environ.get('VERSION')
     REQUEST = VERSION + NUMBER_ID + '/messages'
-    VERIFY_TOKEN = "Bearer "#os.environ.get('VERIFY_TOKEN') 
+    VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN') 
