@@ -6,7 +6,8 @@ def messagesRoutes(app):
     def index():
         messages = Message.get_all()
         last = Message.get_last()
+        print(last)
         if last is not None:
-            return render_template('index.html', registros=messages, last = last)
+            return render_template('index2.html', registros=messages, last = last)
         else:
             return render_template('index.html', registros=messages)
