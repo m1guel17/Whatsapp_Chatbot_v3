@@ -5,4 +5,5 @@ def messagesRoutes(app):
     @app.route('/allMessages', methods=['GET', 'POST'])
     def index():
         messages = Message.get_all()
-        return render_template('index.html', registros=messages)
+        last = Message.get_last()
+        return render_template('index.html', registros=messages, last = last)

@@ -39,5 +39,22 @@
             </tr>
         {% endfor %}
     </table>
+    <h2>Registro de Último Mensaje</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            -<th>Numero</th>
+            <th>Mensaje</th>
+            <th>Fecha y Hora</th>
+        </tr>
+        {%for last_ in last %}
+            <tr>
+                <td>{{last_.id}}</td>
+                <td>{{last_.phone_number}}</td>
+                <td>{{last_.content}}</td>
+                <td>{{last_.sent_at}}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
