@@ -4,14 +4,6 @@ from app.models.database.db import db
 
 class MessageRepository:
     @staticmethod
-    def get_all_messages():
-        """Gets all the rows in MessagesModel.
-        
-        .. versionchanged:: 0.1
-        """
-        return MessagesModel.query.all()
-    
-    @staticmethod
     def check_if_isNew(phone_number: str) -> bool:
         """Gets the last message from a phone_number.
         
@@ -24,6 +16,14 @@ class MessageRepository:
             return False
         else:
             return True
+    
+    @staticmethod
+    def get_all_messages():
+        """Gets all the rows in MessagesModel.
+        
+        .. versionchanged:: 0.1
+        """
+        return MessagesModel.query.all()
     
     @staticmethod
     def fetch_last_msgs_from_clients():
