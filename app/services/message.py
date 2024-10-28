@@ -5,7 +5,7 @@ from app.core.crud.update.message_repo import MessageRepository as msgUpdate
 """
     Services - Message script to handle message operations
     ----------------------------------------------------------------------------
-    >Created: @2024-10-26
+    >Created: 2024-10-26
     >Last_modified: 2024-10-27
     >Author: Miguel
 """

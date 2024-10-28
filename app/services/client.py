@@ -5,7 +5,7 @@ from app.core.crud.update.client_repo import ClientRepository as clientUpdate
 """
     Services - Client script to handle clients operations
     ----------------------------------------------------------------------------
-    >Created: @2024-10-27
+    >Created: 2024-10-27
     >Last_modified: 2024-10-27
     >Author: Miguel
 """
@@ -19,7 +19,7 @@ class Client:
     
     # ================================== READ ==================================
     @staticmethod
-    def isNew(phone_number: str) -> bool:
+    def isNew(phone_number: str):
         return clientRead.check_if_isNew(phone_number)
     
     @staticmethod
