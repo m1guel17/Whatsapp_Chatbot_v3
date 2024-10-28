@@ -1,6 +1,8 @@
 from app.models.orm.client import ClientModel
 from app.models.database.db import db
 
+from datetime import datetime
+
 class ClientRepository:
     @staticmethod
     def add(phone_number: str, isNew: bool):
@@ -12,7 +14,7 @@ class ClientRepository:
         .. versionchanged:: 0.1
         """
         if isNew:
-            clientInstance = ClientModel(phone_number=phone_number, status="potential client")
+            clientInstance = ClientModel(name="nice",phone_number=phone_number, status="potential client", created_at=datetime.utcnow(), lastOrder_id=1231233, lastOrder_on=datetime.utcnow())
             db.session.add(clientInstance)
             db.session.commit()
         
