@@ -13,8 +13,8 @@ class ClientRepository:
 
         .. versionchanged:: 0.2
         """
-        #if isNew:
-        clientInstance = ClientModel(name="nice",phone_number=phone_number, status="potential client", created_at=datetime.utcnow(), lastOrder_id=1231233, lastOrder_on=datetime.utcnow())
-        db.session.add(clientInstance)
-        db.session.commit()
+        if isNew:
+            clientInstance = ClientModel(name="nice",phone_number=phone_number, status="potential client", created_at=datetime.utcnow(), lastOrder_id=1231233, lastOrder_on=datetime.utcnow())
+            db.session.add(clientInstance)
+            db.session.commit()
         
