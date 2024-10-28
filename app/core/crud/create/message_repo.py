@@ -11,7 +11,7 @@ class MessageRepository:
         :param content: String variable to update MessagesModel and LastMessageModel with the last inbound message.
         :param isNew: Boolean variable to discern whether the message instance should be assigned the same chat id or start at 1.
 
-        .. versionchanged:: 1.6
+        .. versionchanged:: 1.7
         """
         
         if isNew:
@@ -24,12 +24,12 @@ class MessageRepository:
             db.session.commit()
             
         else:
-            message = MessagesModel.query.filter_by(phone_number=phone_number).order_by(MessagesModel.id.desc()).first()
-            message.chat = message.chat + 1
+            messagelast = MessagesModel.query.filter_by(phone_number=phone_number).order_by(MessagesModel.id.desc()).first()
+            message = MessagesModel(phone_number=phone_number, content=content, chat=messagelast.chat+1)
             db.session.add(message)
             db.session.commit()
             
-            message_ = LastMessageModel.query.filter_by(phone_number=phone_number)
+            message_ = LastMessageModel.query.filter_by(phone_number=phone_number).first()
             message_.content = content
             db.session.commit()
         
