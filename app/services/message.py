@@ -1,7 +1,6 @@
 from app.core.crud.create.message_repo import MessageRepository as msgCreate
 from app.core.crud.read.message_repo import  MessageRepository as msgRead
 from app.core.crud.update.message_repo import MessageRepository as msgUpdate
-from app.models.orm.message import MessagesModel
 
 """
     Services - Message script to handle message operations
@@ -15,10 +14,10 @@ class Message:
     # ================================= CREATE =================================
     @staticmethod
     def register(phone_number: str, content: str):
-        message = MessagesModel(phone_number=phone_number, content=content)
         isNewEntry = Message.isNew(phone_number)
         
-        msgCreate.add_message(message, isNewEntry)
+        #msgCreate.add_message(message, isNewEntry)
+        msgCreate.add_message(phone_number, content, isNewEntry)
         Message.update_by_phone(phone_number, content, isNewEntry)
     
     # ================================== READ ==================================

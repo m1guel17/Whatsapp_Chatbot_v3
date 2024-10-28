@@ -4,31 +4,32 @@ from app.models.database.db import db
 
 class MessageRepository:
     @staticmethod
-    def add_message(message, isNew: bool):
+    def add_message(phone_number: str, content: str, isNew: bool):
         """Add the inbound message to both MessagesMode.
         
-        :param message: Instance created from inbound message, contains phone_number and content.
+        :param phone_number: String variable used to update MessagesModel and LastMessageModel with the phone_number from which the inbound message originated.
+        :param content: String variable to update MessagesModel and LastMessageModel with the last inbound message.
         :param isNew: Boolean variable to discern whether the message instance should be assigned the same chat id or start at 1.
 
-        .. versionchanged:: 1.4
+        .. versionchanged:: 1.5
         """
+        
         if isNew:
-            message.chat = 1
+            message = MessagesModel(phone_number=phone_number, content=content, chat=1)
             db.session.add(message)
             db.session.commit()
             
-            message_ = LastMessageModel(phone_number=message.phone_number, content=message.content)
+            message_ = LastMessageModel(phone_number=phone_number, content=content)
             db.session.add(message_)
             db.session.commit()
             
         else:
-            #row = MessagesModel.query.filter_by(phone_number=message.phone_number).first()
-            row = MessagesModel.query.filter_by(phone_number=message.phone_number).first()
-            message.chat = row.chat + 1
+            message = MessagesModel.query.filter_by(phone_number=message.phone_number).order_by(MessagesModel.id.desc()).first()
+            message.chat = message.chat + 1
             db.session.add(message)
             db.session.commit()
             
-            row_ = LastMessageModel.query.filter_by(phone_number=message.phone_number).first()
-            row_.content = message.content
+            row_ = LastMessageModel.query.filter_by(phone_number=message.phone_number)
+            row_.content = content
             db.session.commit()
         
