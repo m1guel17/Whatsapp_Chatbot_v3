@@ -20,11 +20,19 @@ class User:
 
     # ================================== READ ==================================
     @staticmethod
-    def findByPhone(phone_number):
+    def findByUsername(username: str):
+        return userRead.get_by_username(username)
+    
+    @staticmethod
+    def findByPhone(phone_number: str):
         return userRead.get_by_phone(phone_number)
+    
+    @staticmethod
+    def authenticateUser(username: str, passwordFromWeb: str):
+        return User.checkPassword4Login(User.findByUsername(username), passwordFromWeb)
 
     @staticmethod
-    def checkPassword4Login(userModelRow, passwordFromWeb):
+    def checkPassword4Login(userModelRow, passwordFromWeb: str):
         return userRead.check_password(userModelRow, passwordFromWeb)
     
     # ================================= UPDATE =================================
