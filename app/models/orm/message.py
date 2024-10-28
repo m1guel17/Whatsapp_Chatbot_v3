@@ -7,7 +7,7 @@ class ColumnNames:
     CHAT = "chat"
 
 class MessagesModel(db.Model):
-    __tablename__ = 'messagesLogs'
+    __tablename__ = 'messages'
 
     id = db.Column(db.Integer, primary_key=True)
     phone_number = db.Column(db.String(15), unique=False, nullable=False)
