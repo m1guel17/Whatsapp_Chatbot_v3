@@ -16,7 +16,6 @@ class Message:
     def register(phone_number: str, content: str):
         isNewEntry = Message.isNew(phone_number)
         
-        #msgCreate.add_message(message, isNewEntry)
         msgCreate.add_message(phone_number, content, isNewEntry)
         Message.update_by_phone(phone_number, content, isNewEntry)
     
