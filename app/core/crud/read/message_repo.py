@@ -7,7 +7,7 @@ class MessageRepository:
     def check_if_isNew(phone_number: str) -> bool:
         """Gets the last message from a phone_number.
         
-        :param phone_number: String variable used to check in MessagesModel the client with phone_number is registered.
+        :param phone_number: String variable used to check in MessagesModel if the client with phone_number is registered.
         
         .. versionchanged:: 1.1
         """
