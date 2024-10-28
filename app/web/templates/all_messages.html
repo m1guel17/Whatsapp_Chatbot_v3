@@ -15,6 +15,7 @@
             <th>id</th>
             <th>Numero</th>
             <th>Mensaje</th>
+            <th>Chat</th>
             <th>Fecha y Hora</th>
         </tr>
         {%for registro in registros %}
@@ -22,7 +23,25 @@
                 <td>{{registro.id}}</td>
                 <td>{{registro.phone_number}}</td>
                 <td>{{registro.content}}</td>
+                <td>{{registro.chat}}</td>
                 <td>{{registro.sent_at}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h2>Últimos Mensajes</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Numero</th>
+            <th>Mensaje</th>
+            <th>Fecha y Hora</th>
+        </tr>
+        {%for last in lasts %}
+            <tr>
+                <td>{{last.id}}</td>
+                <td>{{last.phone_number}}</td>
+                <td>{{last.content}}</td>
+                <td>{{last.sent_at}}</td>
             </tr>
         {% endfor %}
     </table>

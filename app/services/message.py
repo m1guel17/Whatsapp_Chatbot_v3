@@ -3,20 +3,40 @@ from app.core.crud.read.message_repo import  MessageRepository as msgRead
 from app.core.crud.update.message_repo import MessageRepository as msgUpdate
 from app.models.orm.message import MessagesModel
 
+"""
+    Services - Message script to handle message operations
+    ----------------------------------------------------------------------------
+    >Created: @2024-10-26
+    >Last_modified: 2024-10-27
+    >Author: Miguel
+"""
+
 class Message:
+    # ================================= CREATE =================================
     @staticmethod
-    def register(phone_number, content):
+    def register(phone_number: str, content: str):
         message = MessagesModel(phone_number=phone_number, content=content)
-        msgCreate.add_message(message)
+        isNewEntry = Message.isNew(phone_number)
+        
+        msgCreate.add_message(message, isNewEntry)
+        Message.update_by_phone(phone_number, content, isNewEntry)
     
+    # ================================== READ ==================================
+    @staticmethod
+    def isNew(phone_number: str):
+        return msgRead.check_if_isNew(phone_number)
+
     @staticmethod
     def get_all():
         return msgRead.get_all_messages()
-
+    
     @staticmethod
-    def get_last():
-        return msgRead.get_last_message()
+    def fetch_last_msgs():
+        return msgRead.fetch_last_msgs_from_clients()
 
+    # ================================= UPDATE =================================
     @staticmethod
-    def update_by_phone(phone_number):
-        msgUpdate.by_phone(phone_number)
+    def update_by_phone(phone_number: str, content: str):
+        msgUpdate.by_phone(phone_number, content, Message.isNew(phone_number))
+    
+    # ================================= DELETE =================================
