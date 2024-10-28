@@ -9,9 +9,10 @@ def create_app():
     db.init_app(app)
 
     with app.app_context():
-        from app.models.orm.message import MessagesModel, LastMessageModel
-        from app.models.orm.user import UserModel
-        from app.models.orm.client import ClientModel
+        #from app.models.orm.message import MessagesModel, LastMessageModel
+        #from app.models.orm.user import UserModel
+        #from app.models.orm.client import ClientModel
+        from app.models import UserModel, MessagesModel, LastMessageModel
                 
         #from app.controllers import Routes
         #Routes(app)
