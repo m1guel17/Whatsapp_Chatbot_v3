@@ -5,7 +5,7 @@ from datetime import datetime
 
 class ClientRepository:
     @staticmethod
-    def add(phone_number: str, isNew: bool):
+    def add_Client(phone_number: str, isNew: bool):
         """Stores client data into database.
         
         :param phone_number: String variable used to store in ClientModel the phone_number from which the inbound message originated.

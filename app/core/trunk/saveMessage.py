@@ -5,10 +5,10 @@ def saveText(content, phone_number):
     Message.register(phone_number, content)
     Client.register(phone_number)
     
-    if content == "status":
+    if "status" in content:
         Message.update_by_phone(phone_number, "changed status")
         Client.update_status(phone_number, "client")
     
-    elif content == "id":
+    elif "id" in content:
         Message.update_by_phone(phone_number, "changed id")
         Client.update_lastOrder_id(phone_number, 12089)

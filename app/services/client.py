@@ -15,7 +15,7 @@ class Client:
     @staticmethod
     def register(phone_number: str):
         isNewClient = Client.isNew(phone_number)
-        clientCreate.add(phone_number, isNewClient)
+        clientCreate.add_Client(phone_number, isNewClient)
     
     # ================================== READ ==================================
     @staticmethod
