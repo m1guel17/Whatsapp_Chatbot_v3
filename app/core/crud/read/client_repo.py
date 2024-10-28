@@ -8,9 +8,14 @@ class ClientRepository:
         
         :param phone_number: String variable used to check in ClientModel if the client with phone_number is registered.
         
-        .. versionchanged:: 0.1
+        .. versionchanged:: 0.2
         """
-        return ClientModel.query.filter_by(phone_number=phone_number).first() is None
+        #return ClientModel.query.filter_by(phone_number=phone_number).first() is None
+        row = ClientModel.query.filter_by(phone_number=phone_number).first()
+        if row is not None:
+            return False
+        else:
+            return True
 
     @staticmethod
     def get_all_clients():
