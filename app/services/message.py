@@ -38,3 +38,5 @@ class Message:
         msgUpdate.by_phone(phone_number, content, Message.isNew(phone_number))
     
     # ================================= DELETE =================================
+    
+    

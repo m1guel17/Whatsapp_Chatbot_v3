@@ -19,13 +19,3 @@ class MessageRepository:
             lastMessage.content = content
             db.session.add(lastMessage)
             db.session.commit()
-            
-        """
-        row = MessagesModel.query.filter_by(phone_number=phone_number).first()
-        row.content = content
-        db.session.commit()
-        
-        for key, value in kwargs.items():
-            setattr(row, key, value)
-            db.session.commit()
-        """

@@ -15,7 +15,6 @@ class MessageRepository:
 
         .. versionchanged:: 1.9
         """
-        
         sentAt = datetime.utcnow()
         
         if isNew:

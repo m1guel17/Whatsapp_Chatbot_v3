@@ -9,6 +9,12 @@ class UserRepository:
         db.session.commit()
     
     @staticmethod
-    def set_password(password):
+    def set_password(password: str) -> str:
+        """Returns a hashed password generated from string input.
+        
+        :param password: String variable, is the plaintext password from web.
+
+        .. versionchanged:: 0.1
+        """
         return generate_password_hash(password)
     
