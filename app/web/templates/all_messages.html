@@ -45,5 +45,28 @@
             </tr>
         {% endfor %}
     </table>
+    <h2>Clientes</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Numero</th>
+            <th>Estado</th>
+            <th>Fecha y Hora</th>
+            <th>ID Última Orden</th>
+            <th>Fecha y Hora Última Orden</th>
+        </tr>
+        {%for client in clients %}
+            <tr>
+                <td>{{client.id}}</td>
+                <td>{{client.name}}</td>
+                <td>{{client.phone_number}}</td>
+                <td>{{client.status}}</td>
+                <td>{{client.created_at}}</td>
+                <td>{{client.lastOrder_id}}</td>
+                <td>{{client.lastOrder_on}}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

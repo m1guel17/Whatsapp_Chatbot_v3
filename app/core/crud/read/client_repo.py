@@ -11,3 +11,12 @@ class ClientRepository:
         .. versionchanged:: 0.1
         """
         return ClientModel.query.filter_by(phone_number=phone_number).first() is None
+
+    @staticmethod
+    def get_all_clients():
+        """Gets all the rows in ClientModel.
+        
+        .. versionchanged:: 0.1
+        """
+        return ClientModel.query.all()
+    

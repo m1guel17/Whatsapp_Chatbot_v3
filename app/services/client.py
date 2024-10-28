@@ -22,6 +22,10 @@ class Client:
     def isNew(phone_number: str) -> bool:
         return clientRead.check_if_isNew(phone_number)
     
+    @staticmethod
+    def get_all():
+        return clientRead.get_all_clients()
+    
     # ================================= UPDATE =================================
     @staticmethod
     def update_status(phone_number: str, status_update: str):
