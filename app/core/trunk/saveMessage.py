@@ -6,9 +6,9 @@ from app.services import Message
 import time
 
 def saveText(content, phone_number):
-    Message.register(phone_number, content)
-    # time.sleep(10)
     Client.register(phone_number)
+    # time.sleep(10)
+    Message.register(phone_number, content)
     
     if "status" in content:
         Message.update_by_phone(phone_number, "changed status")
