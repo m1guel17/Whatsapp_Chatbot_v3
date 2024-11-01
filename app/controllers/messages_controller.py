@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from app.services.message import Message
 from app.services.client import Client
-from app.services.user import User
+#from app.services.user import User
 #from app.models.database.db import db
 from app import db
 
