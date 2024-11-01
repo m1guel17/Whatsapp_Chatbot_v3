@@ -13,19 +13,21 @@ from app.core.crud.update.client_repo import ClientRepository as clientUpdate
 class Client:
     # ================================= CREATE =================================
     @staticmethod
-    def register(phone_number: str):
-        isNewClient = Client.isNew(phone_number)
-        
-        clientCreate.add_client(phone_number, isNewClient)
+    def registerClient(phone_number: str):        
+        clientCreate.new(phone_number)
     
     # ================================== READ ==================================
     @staticmethod
     def isNew(phone_number: str):
-        return clientRead.check_if_isNew(phone_number)
+        return clientRead.isNew(phone_number)
     
     @staticmethod
     def get_all():
-        return clientRead.get_all_clients()
+        return clientRead.get_all()
+    
+    @staticmethod
+    def get_one(phone_number: str):
+        return clientRead.getByPhone(phone_number)
     
     # ================================= UPDATE =================================
     @staticmethod
@@ -35,7 +37,6 @@ class Client:
     @staticmethod
     def update_lastOrder_id(phone_number: str, orderid: int):
         clientUpdate.by_phone(phone_number, lastOrder_id=orderid)
-    
     
     # ================================= DELETE =================================
 

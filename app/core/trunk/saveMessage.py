@@ -6,7 +6,13 @@ from app.services import Client
 import time
 
 def saveText(content, phone_number):
-    Client.register(phone_number)
+    if Client.isNew(phone_number):
+        Client.registerClient(phone_number)
+        
+    else:
+        clientInstance = Client.get_one(phone_number)
+        
+    
     # time.sleep(10)
     #Message.register(phone_number, content)
     
