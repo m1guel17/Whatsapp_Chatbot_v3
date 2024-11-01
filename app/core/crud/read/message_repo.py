@@ -1,5 +1,5 @@
-from app.models.orm.message import MessagesModel
-from app.models.orm.message import LastMessageModel
+from app.models.orm.databases import MessagesModel
+from app.models.orm.databases import LastMessageModel
 from app.models.database.db import db
 
 class MessageRepository:
