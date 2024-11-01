@@ -14,7 +14,7 @@ def messagesRoutes(app):
         return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients)
     
     @app.route('/tables', methods=['GET', 'POST'])
-    def index():
+    def tables():
         tables_info = {}
         for table_name, table in db.metadata.tables.items():
             columns = [{
