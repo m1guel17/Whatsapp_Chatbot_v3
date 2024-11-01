@@ -1,5 +1,4 @@
 from flask import request, jsonify
-from app.api.whatsapp_api import send_response ###
 from app.core.trunk.entryDealer import receive_message
 from app.config import WHATSAPP_API
 
