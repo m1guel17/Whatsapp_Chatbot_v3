@@ -4,8 +4,8 @@ from app.services.client import Client
 import time
 
 def saveText(content, phone_number):
-    Message.register(phone_number, content)
-    time.sleep(10)
+    #Message.register(phone_number, content)
+    # time.sleep(10)
     Client.register(phone_number)
     
     if "status" in content:
