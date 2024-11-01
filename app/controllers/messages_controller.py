@@ -10,9 +10,9 @@ from app import db
 def messagesRoutes(app):
     @app.route('/', methods=['GET', 'POST'])
     def index():
+        clients = Client.get_all()
         messages = Message.get_all()
         lasts = Message.fetch_last_msgs()
-        clients = Client.get_all()
             
         return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients)
         #return render_template('all_messages.html', clients=clients)
