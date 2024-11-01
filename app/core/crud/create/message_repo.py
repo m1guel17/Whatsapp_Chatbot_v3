@@ -1,6 +1,7 @@
 from app.models.orm.databases import MessagesModel
 from app.models.orm.databases import LastMessageModel
-from app.models.database.db import db
+# from app.models.database.db import db
+from app import db
 
 from datetime import datetime
 

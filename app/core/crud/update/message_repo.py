@@ -1,5 +1,6 @@
 from app.models.orm.databases import LastMessageModel
-from app.models.database.db import db
+# from app.models.database.db import db
+from app import db
 
 class MessageRepository:
     @staticmethod

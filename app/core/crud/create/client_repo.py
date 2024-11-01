@@ -1,5 +1,6 @@
 from app.models.orm.databases import ClientModel
-from app.models.database.db import db
+# from app.models.database.db import db
+from app import db
 
 from datetime import datetime
 
