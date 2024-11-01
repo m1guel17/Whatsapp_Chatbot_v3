@@ -12,11 +12,6 @@ class ClientRepository:
         .. versionchanged:: 0.2
         """
         return ClientModel.query.filter_by(phone_number=phone_number).first() is None
-        # row = ClientModel.query.filter_by(phone_number=phone_number).first()
-        # if row is not None:
-        #     return False
-        # else:
-        #     return True
 
     @staticmethod
     def get_all_clients():

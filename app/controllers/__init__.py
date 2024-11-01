@@ -1,7 +1,7 @@
 from app.controllers.chatbot_controller import chatbotRoutes
-from app.controllers.messages_controller import messagesRoutes
+from app.controllers.tables_controller import tablesRoutes
 
 
 def Routes(app):
     chatbotRoutes(app)
-    messagesRoutes(app)
+    tablesRoutes(app)

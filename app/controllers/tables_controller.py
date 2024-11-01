@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for
 from app.services import Client
 from app import db
 
-def messagesRoutes(app):
+def tablesRoutes(app):
     @app.route('/', methods=['GET', 'POST'])
     def index():
         clients = Client.get_all()
