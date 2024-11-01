@@ -11,13 +11,6 @@ def create_app():
     with app.app_context():              
         from app.controllers import Routes
         Routes(app)
-        #from app.controllers.chatbot_controller import chatbotRoutes
-        #from app.controllers.messages_controller import messagesRoutes
-        #chatbotRoutes(app)
-        #messagesRoutes(app)
-        #from app.models.orm.user import UserModel
-        #from app.models.orm.client import ClientModel
-        #from app.models.orm.message import MessagesModel, LastMessageModel
         
         db.create_all()
 

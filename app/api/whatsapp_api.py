@@ -1,7 +1,6 @@
 from app.config import WHATSAPP_API
 from flask import json
 import http.client
-import os
 
 """
     API - whatsapp_api script to send response to client based on json message
