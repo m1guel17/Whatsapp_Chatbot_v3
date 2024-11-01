@@ -5,7 +5,7 @@ from app.models.orm.user import UserModel
 """
     Services - User script to handle users operations
     ----------------------------------------------------------------------------
-    >Created: @2024-10-27
+    >Created: 2024-10-27
     >Last_modified: 2024-10-26
     >Author: Miguel
 """

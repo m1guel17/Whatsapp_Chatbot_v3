@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes Log</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/all_messages.css') }}">
+
+</head>
+<body>
+    {% for table_name, columns in tables_info.items() %}
+        <h2>Table: {{ table_name }}</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Column Name</th>
+                    <th>Type</th>
+                    <th>Nullable</th>
+                    <th>Primary Key</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for column in columns %}
+                    <tr>
+                        <td>{{ column.name }}</td>
+                        <td>{{ column.type }}</td>
+                        <td>{{ column.nullable }}</td>
+                        <td>{{ column.primary_key }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>

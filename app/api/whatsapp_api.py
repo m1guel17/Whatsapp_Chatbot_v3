@@ -3,6 +3,14 @@ from flask import json
 import http.client
 import os
 
+"""
+    API - whatsapp_api script to send response to client based on json message
+    ----------------------------------------------------------------------------
+    >Created: 2024-10-27
+    >Last_modified: 2024-11-01
+    >Author: Miguel
+"""
+
 def send_response(data):
     data = json.dumps(data)
 
