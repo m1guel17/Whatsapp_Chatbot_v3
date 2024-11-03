@@ -1,4 +1,5 @@
 from app.models.orm.databases import ClientModel
+from app.models.orm.databases import MessagesModel
 from app import db
 
 from datetime import datetime
@@ -15,6 +16,12 @@ class ClientRepository:
         """
         clientInstance = ClientModel(phone_number=phone_number, status="potential client", created_at=datetime.utcnow())
         db.session.add(clientInstance)
+        
+        db.session.commit()
+        
+        sentAt = datetime.utcnow()
+        messageInstance = MessagesModel(phone_number=phone_number, content="ssss", chat=1, sent_at=sentAt)
+        db.session.add(messageInstance)
         
         db.session.commit()
         
