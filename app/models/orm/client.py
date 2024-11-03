@@ -5,6 +5,9 @@ class ColumnNames:
     NAME = "name"
     NUMBER = "phone_number"
     STATUS = "status"
+    CREATED_AT = "created_at"
+    LASTORDER_ID= "lastOrder_id"
+    LASTORDER_ON= "lastOrder_on"
 
 class ClientModel(db.Model):
     __tablename__ = 'client'

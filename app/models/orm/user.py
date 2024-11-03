@@ -3,11 +3,14 @@ from app import db
 from datetime import datetime
 
 class ColumnNames:
+    NAME = "name"
     NUMBER = "phone_number"
     USERNAME = "username"
     PASSWORD = "password_hash"
     ADMIN = "is_admin"
     STATUS = "status"
+    CREATED_AT = "created_at"
+    MODIFIED_ON= "modified_on"
 
 class UserModel(db.Model):
     __tablename__ = 'users'

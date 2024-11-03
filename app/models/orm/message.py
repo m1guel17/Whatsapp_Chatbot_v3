@@ -5,6 +5,7 @@ class ColumnNames:
     NUMBER = "phone_number"
     MESSAGE = "content"
     CHAT = "chat"
+    SENT_AT = "sent_at"
 
 class MessagesModel(db.Model):
     __tablename__ = 'messages'
