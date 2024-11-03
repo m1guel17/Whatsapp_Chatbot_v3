@@ -15,15 +15,15 @@ class MessageRepository:
         
         .. versionchanged:: 1.3
         """
-        sentAt = datetime.utcnow()
-        parsed_sentAt = datetime.strptime(sentAt, "%Y-%m-%d %H:%M:%S") #.strftime("%Y-%m-%d %I:%M:%S %p")
+        #sentAt = datetime.utcnow()
+        #parsed_sentAt = datetime.strptime(sentAt, "%Y-%m-%d %H:%M:%S") #.strftime("%Y-%m-%d %I:%M:%S %p")
         
-        lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
-        lastMessageInstance.content = content
-        lastMessageInstance.sent_at = sentAt
+        #lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
+        #lastMessageInstance.content = content
+        #lastMessageInstance.sent_at = sentAt
         
-        db.session.add(lastMessageInstance)
-        db.session.commit()
+        #db.session.add(lastMessageInstance)
+        #db.session.commit()
         
         MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt)
         db.session.add(MessageInstance)
