@@ -1,5 +1,4 @@
 from app.models.orm.databases import ClientModel
-from app.models.orm.databases import MessagesModel
 from app import db
 
 from datetime import datetime
@@ -10,19 +9,11 @@ class ClientRepository:
         """Stores client data into database.
         
         :param phone_number: String variable used to store in ClientModel the phone_number from which the inbound message originated.
-        :param isNew: Boolean variable to discern whether the client instance should be assigned 'potential client' status.
 
-        .. versionchanged:: 0.4
+        .. versionchanged:: 0.5
         """
         clientInstance = ClientModel(phone_number=phone_number, status="potential client", created_at=datetime.utcnow())
-        # db.session.add(clientInstance)
-        
-        # db.session.commit()
-        
-        #sentAt = datetime.utcnow()
-        #messageInstance = MessagesModel(phone_number=phone_number, content="ssss", sent_at=sentAt)
-        #db.session.add_all([messageInstance, clientInstance])
+
         db.session.add(clientInstance)
-        
         db.session.commit()
         
