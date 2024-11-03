@@ -16,9 +16,9 @@ class MessageRepository:
         .. versionchanged:: 1.3
         """
         sentAt = datetime.utcnow()
-        #parsed_sentAt = datetime.strptime(sentAt, "%Y-%m-%d %H:%M:%S") #.strftime("%Y-%m-%d %I:%M:%S %p")
+        parsed_sentAt = datetime.strptime(sentAt, "%Y-%m-%d %H:%M:%S") #.strftime("%Y-%m-%d %I:%M:%S %p")
         
-        MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt)
+        MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=parsed_sentAt)
         # db.session.add(MessageInstance)
         # db.session.commit()
         
