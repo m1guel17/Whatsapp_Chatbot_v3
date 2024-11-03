@@ -15,7 +15,7 @@ class MessageRepository:
         
         .. versionchanged:: 1.3
         """
-        #sentAt = datetime.utcnow()
+        sentAt = datetime.utcnow()
         #parsed_sentAt = datetime.strptime(sentAt, "%Y-%m-%d %H:%M:%S") #.strftime("%Y-%m-%d %I:%M:%S %p")
         
         #lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
