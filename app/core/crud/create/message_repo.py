@@ -14,11 +14,11 @@ class MessageRepository:
 
         .. versionchanged:: 0.1
         """
-        sentAt = datetime.now()
+        sentAt = datetime.utcnow()
         #parsed_sentAt = datetime.strptime(sentAt, "%Y-%m-%d %H:%M:%S")
         #parsed_sentAt2 = datetime.strptime(sentAt, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d %I:%M:%S %p")
         
-        messageInstance = MessagesModel(phone_number=phone_number, content=content)
+        messageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt)
         # messageInstance2 = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt)
         # messageInstance2 = MessagesModel(phone_number=phone_number, content=content, sent_at=parsed_sentAt2)
         lastmessageInstance = LastMessageModel(phone_number=phone_number, content=content, sent_at=sentAt)
