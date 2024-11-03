@@ -27,7 +27,7 @@ class MessageRepository:
         return MessagesModel.query.all()
     
     @staticmethod
-    def fetch_last(phone_number: str):
+    def fetch_last():
         """Gets all the rows in LastMessageModel.
         
         .. versionchanged:: 0.1
