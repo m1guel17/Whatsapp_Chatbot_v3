@@ -1,4 +1,3 @@
-# from app.models.orm.databases import ClientModel
 from app.models.orm.client import ClientModel
 from app import db
 
