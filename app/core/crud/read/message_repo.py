@@ -11,7 +11,12 @@ class MessageRepository:
         
         .. versionchanged:: 1.1
         """
-        return MessagesModel.query.filter_by(phone_number=phone_number).first() is None
+        # return MessagesModel.query.filter_by(phone_number=phone_number).first() is None
+        row = MessagesModel.query.filter_by(phone_number=phone_number).first()
+        if row is not None:
+            return False
+        else:
+            return True
 
     @staticmethod
     def get_all():
