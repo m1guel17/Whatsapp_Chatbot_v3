@@ -8,8 +8,8 @@ import time
 
 def saveText(content, phone_number):
     if Client.isNew(phone_number):
-        Client.registerClient(phone_number)
         Message.registerMsgs(phone_number, content)
+        Client.registerClient(phone_number)
         
     else:
         clientInstance = Client.get_one(phone_number)
