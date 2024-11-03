@@ -1,16 +1,16 @@
 from flask import render_template, request, redirect, url_for
-from app.services import Client
+from app.services import Client, Message
 from app import db
 
 def tablesRoutes(app):
     @app.route('/', methods=['GET', 'POST'])
     def index():
         clients = Client.get_all()
-        #messages = Message.get_all()
-        #lasts = Message.fetch_last_msgs()
+        messages = Message.get_all()
+        lasts = Message.fetch_last_msgs()
             
-        #return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients)
-        return render_template('all_messages.html', clients=clients)
+        return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients)
+        #return render_template('all_messages.html', clients=clients)
     
     @app.route('/tables', methods=['GET', 'POST'])
     def tables():

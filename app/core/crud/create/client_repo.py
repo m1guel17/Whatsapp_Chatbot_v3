@@ -19,9 +19,10 @@ class ClientRepository:
         
         # db.session.commit()
         
-        sentAt = datetime.utcnow()
-        messageInstance = MessagesModel(phone_number=phone_number, content="ssss", chat=1, sent_at=sentAt)
-        db.session.add_all([messageInstance, clientInstance])
+        #sentAt = datetime.utcnow()
+        #messageInstance = MessagesModel(phone_number=phone_number, content="ssss", sent_at=sentAt)
+        #db.session.add_all([messageInstance, clientInstance])
+        db.session.add(clientInstance)
         
         db.session.commit()
         
