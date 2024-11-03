@@ -4,5 +4,5 @@ flask_session/
 instance/
 venv/
 structure.txt
-app/utils/
 app/core/trunk/robot/
+app/stack/
