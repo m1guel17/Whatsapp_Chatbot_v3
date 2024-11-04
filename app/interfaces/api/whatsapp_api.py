@@ -1,4 +1,5 @@
 from app.stack.constant.whatsapp import WHATSAPP_API
+from app.services import Message
 
 from flask import json
 import http.client
@@ -12,7 +13,7 @@ import http.client
 """
 
 def send_response(data):
-    data = json.dumps(data)
+    data_ = json.dumps(data)
 
     headers = {
         "Content-Type": "application/json",
@@ -20,10 +21,14 @@ def send_response(data):
     }
     connection = http.client.HTTPSConnection(WHATSAPP_API.URL)    
     try:
-        connection.request("POST", WHATSAPP_API.REQUEST, data, headers)
+        connection.request("POST", WHATSAPP_API.REQUEST, data_, headers)
         response = connection.getresponse()
         print(response.status, response.reason)
+        Message.update_in_and_out(data["to"], "response sent")
+        
     except Exception as e:
         print(e)
+        
     finally:
         connection.close()
+        

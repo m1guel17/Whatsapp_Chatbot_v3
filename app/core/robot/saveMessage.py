@@ -11,7 +11,6 @@ def saveText(phone_number: str, content: str):
         
     else:
         clientInstance = Client.get_one(phone_number)
-        print(clientInstance)
         Message.update_by_phone(phone_number, content)
 
     

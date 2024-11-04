@@ -1,10 +1,13 @@
-from flask import request, jsonify
 from app.core.robot.saveMessage import saveText
+from app.services import Message
+
+from flask import request, jsonify
 
 def receive_message(req_data):
         try:
             req_data = request.get_json()
             msg_object = req_data.get("entry", [{}])[0].get("changes", [{}])[0].get("value", {}).get("messages", [])
+            phone_number = ""
             
             if msg_object:
                 messages = msg_object[0]
@@ -31,6 +34,8 @@ def receive_message(req_data):
                         content = messages["text"]["body"]
                         phone_number = messages["from"]
                         saveText(phone_number, content)
+            
+            Message.update_in_and_out(phone_number, "message received")
             
             return jsonify({'message': 'EVENT_RECEIVED'})
         except Exception as e:
