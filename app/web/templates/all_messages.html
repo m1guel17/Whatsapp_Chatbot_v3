@@ -35,6 +35,7 @@
             <th>Numero</th>
             <th>Mensaje</th>
             <th>Fecha y Hora</th>
+            <th>Estado</th>
         </tr>
         {%for last in lasts %}
             <tr>
@@ -42,6 +43,7 @@
                 <td>{{last.phone_number}}</td>
                 <td>{{last.content}}</td>
                 <td>{{last.sent_at}}</td>
+                <td>{{last.status}}</td>
             </tr>
         {% endfor %}
     </table>

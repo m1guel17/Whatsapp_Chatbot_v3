@@ -15,10 +15,10 @@ def saveText(phone_number: str, content: str):
 
     
         if "status" in content:
-            Client.update_status(phone_number, "client")
             send_response(msg(phone_number, "status changed"))
+            Client.update_status(phone_number, "client")
             
         
         elif "id" in content:
-            Client.update_lastOrder_id(phone_number, 12089)
             send_response(msg(phone_number, "id generated"))
+            Client.update_lastOrder_id(phone_number, 12089)
