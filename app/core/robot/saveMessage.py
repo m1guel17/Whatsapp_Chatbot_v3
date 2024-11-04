@@ -7,6 +7,7 @@ def saveText(phone_number: str, content: str):
     if Client.isNew(phone_number):
         Message.registerMsgs(phone_number, content)
         Client.registerClient(phone_number)
+        send_response(msg(phone_number, "Bienvenido a Lian Accesorios ☺️, Enviamos captura pantalla de los productos que viste en live y quieres adquirir. El monto mínimo para separar tus productos es de 30 soles !!"))
         
     else:
         clientInstance = Client.get_one(phone_number)
