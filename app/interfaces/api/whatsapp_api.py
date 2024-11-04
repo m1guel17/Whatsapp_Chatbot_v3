@@ -1,5 +1,7 @@
-from app.config import WHATSAPP_API
+# from app.config import WHATSAPP_API
+from app.stack.constant.whatsapp import WHATSAPP_API
 from flask import json
+
 import http.client
 
 """

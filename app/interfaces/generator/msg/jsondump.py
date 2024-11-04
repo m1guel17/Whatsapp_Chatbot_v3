@@ -1,12 +1,12 @@
 
-def msg(number, txt):
+def msg(phone_number, message):
     msg = {
         "messaging_product": "whatsapp",
         "recipient_type": "individual",
-        "to": number,
+        "to": phone_number,
         "text": {
             "preview_url": False,
-            "body": txt
+            "body": message
         }
     }
     return msg

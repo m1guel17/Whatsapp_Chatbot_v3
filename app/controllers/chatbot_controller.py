@@ -1,6 +1,8 @@
-from flask import request, jsonify
 from app.core.robot.entryDealer import receive_message
-from app.config import WHATSAPP_API
+#from app.config import WHATSAPP_API
+from app.stack.constant.whatsapp import WHATSAPP_API
+
+from flask import request, jsonify
 
 def chatbotRoutes(app):
     @app.route('/webhook', methods=['GET', 'POST'])
