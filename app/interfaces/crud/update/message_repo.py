@@ -15,7 +15,11 @@ class MessageRepository:
         .. versionchanged:: 1.4
         """
         sentAt = datetime.utcnow()
-        MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt)
+        
+        lastChat_ = MessagesModel.query.filter_by(phone_number=phone_number).order_by(MessagesModel.id.desc()).first()
+        
+        MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt, chat=lastChat_.chat + 1)
+        
         lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
         lastMessageInstance.content = content
         lastMessageInstance.sent_at = sentAt
