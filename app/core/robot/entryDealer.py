@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from app.core.trunk.saveMessage import saveText
+from app.core.robot.saveMessage import saveText
 
 def receive_message(req_data):
         try:

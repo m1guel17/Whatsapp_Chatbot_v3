@@ -6,3 +6,4 @@ venv/
 structure.txt
 app/core/trunk/robot/
 app/stack/
+app/server/

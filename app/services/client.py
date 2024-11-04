@@ -1,6 +1,6 @@
-from app.core.crud.create.client_repo import ClientRepository as clientCreate
-from app.core.crud.read.client_repo import ClientRepository as clientRead
-from app.core.crud.update.client_repo import ClientRepository as clientUpdate
+from app.interfaces.crud.create.client_repo import ClientRepository as clientCreate
+from app.interfaces.crud.read.client_repo import ClientRepository as clientRead
+from app.interfaces.crud.update.client_repo import ClientRepository as clientUpdate
 
 """
     Services - Client script to handle clients operations

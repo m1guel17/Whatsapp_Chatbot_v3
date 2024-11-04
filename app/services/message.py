@@ -1,6 +1,6 @@
-from app.core.crud.create.message_repo import MessageRepository as msgCreate
-from app.core.crud.read.message_repo import MessageRepository as msgRead
-from app.core.crud.update.message_repo import MessageRepository as msgUpdate
+from app.interfaces.crud.create.message_repo import MessageRepository as msgCreate
+from app.interfaces.crud.read.message_repo import MessageRepository as msgRead
+from app.interfaces.crud.update.message_repo import MessageRepository as msgUpdate
 
 """
     Services - Message script to handle message operations

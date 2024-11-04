@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from app.core.trunk.entryDealer import receive_message
+from app.core.robot.entryDealer import receive_message
 from app.config import WHATSAPP_API
 
 def chatbotRoutes(app):
