@@ -7,7 +7,6 @@ def receive_message(req_data):
         try:
             req_data = request.get_json()
             msg_object = req_data.get("entry", [{}])[0].get("changes", [{}])[0].get("value", {}).get("messages", [])
-            phone_number = ""
             
             if msg_object:
                 messages = msg_object[0]
@@ -22,20 +21,17 @@ def receive_message(req_data):
                             content = messages["interactive"]["button_reply"]["id"]
                             title = messages["interactive"]["button_reply"]["title"]
                             phone_number = messages["from"]
-                            #Message.update_in_and_out(phone_number, "message received")
                             saveText(phone_number, content)
                             
                         elif interactive_type == "list_reply":
                             content = messages["interactive"]["list_reply"]["id"]
                             title = messages["interactive"]["list_reply"]["title"]
                             phone_number = messages["from"]
-                            #Message.update_in_and_out(phone_number, "message received")
                             saveText(phone_number, content)
                             
                     if "text" in messages:
                         content = messages["text"]["body"]
                         phone_number = messages["from"]
-                        #Message.update_in_and_out(phone_number, "message received")
                         saveText(phone_number, content)
             
             

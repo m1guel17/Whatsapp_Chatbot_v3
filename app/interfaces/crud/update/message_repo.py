@@ -23,6 +23,7 @@ class MessageRepository:
         lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
         lastMessageInstance.content = content
         lastMessageInstance.sent_at = sentAt
+        lastMessageInstance.status = "pending response"
         
         db.session.add_all([MessageInstance,lastMessageInstance])
         db.session.commit()
