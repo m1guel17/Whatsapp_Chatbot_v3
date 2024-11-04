@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, url_for
+from app.models.orm import *
 from app.services import Client, Message
 from app import db
 
