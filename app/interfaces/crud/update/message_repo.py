@@ -12,7 +12,7 @@ class MessageRepository:
         :param phone_number: String variable used to update LastMessageModel with the phone_number from which the inbound message originated.
         :param content: String variable to update LastMessageModel with the inbound message.
         
-        .. versionchanged:: 1.4
+        .. versionchanged:: 1.5
         """
         sentAt = datetime.utcnow()
         
@@ -23,6 +23,7 @@ class MessageRepository:
         lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
         lastMessageInstance.content = content
         lastMessageInstance.sent_at = sentAt
+        lastMessageInstance.status = "response sent"
         
         db.session.add_all([MessageInstance,lastMessageInstance])
         db.session.commit()
