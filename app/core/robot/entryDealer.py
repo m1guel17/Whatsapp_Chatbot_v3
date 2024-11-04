@@ -19,18 +19,18 @@ def receive_message(req_data):
                             content = messages["interactive"]["button_reply"]["id"]
                             title = messages["interactive"]["button_reply"]["title"]
                             phone_number = messages["from"]
-                            saveText(content, phone_number)
+                            saveText(phone_number, content)
                             
                         elif interactive_type == "list_reply":
                             content = messages["interactive"]["list_reply"]["id"]
                             title = messages["interactive"]["list_reply"]["title"]
                             phone_number = messages["from"]
-                            saveText(content, phone_number)
+                            saveText(phone_number, content)
                             
                     if "text" in messages:
                         content = messages["text"]["body"]
                         phone_number = messages["from"]
-                        saveText(content, phone_number)
+                        saveText(phone_number, content)
             
             return jsonify({'message': 'EVENT_RECEIVED'})
         except Exception as e:
