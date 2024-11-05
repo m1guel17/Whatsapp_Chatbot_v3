@@ -1,10 +1,11 @@
 from app.core.robot.saveMessage import saveText
-from app.services import Message
+from app.services import Raw
 
 from flask import request, jsonify
 
 def receive_message(req_data):
         try:
+            Raw.registerRaw(req_data)
             req_data = request.get_json()
             msg_object = req_data.get("entry", [{}])[0].get("changes", [{}])[0].get("value", {}).get("messages", [])
             

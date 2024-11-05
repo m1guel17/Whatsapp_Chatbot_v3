@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from app.models.orm import *
-from app.services import Client, Message
+from app.services import Client, Message, Raw
 from app import db
 
 def tablesRoutes(app):
@@ -9,8 +9,9 @@ def tablesRoutes(app):
         clients = Client.get_all()
         messages = Message.get_all()
         lasts = Message.fetch_last_msgs()
+        raws = Raw.get_all()
             
-        return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients)
+        return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients, raws=raws)
         #return render_template('all_messages.html', clients=clients)
     
     @app.route('/tables', methods=['GET', 'POST'])
