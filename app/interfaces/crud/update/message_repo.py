@@ -35,7 +35,7 @@ class MessageRepository:
         :param phone_number: String variable used to update LastMessageModel with the phone_number from which the inbound message originated.
         :param content: String variable to update LastMessageModel with the inbound message.
         
-        .. versionchanged:: 1.5
+        .. versionchanged:: 0.2
         """
         sentAt = datetime.utcnow()
         

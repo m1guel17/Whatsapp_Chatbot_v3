@@ -1,13 +1,14 @@
+from app.interfaces.api.whatsapp_api import send_response
+from app.interfaces.generator.msg.json_format import plain_txt
+from app.core.robot.messages_list import welcome_msg
 from app.services import Message
 from app.services import Client
-from app.interfaces.generator.msg.jsondump import msg
-from app.interfaces.api.whatsapp_api import send_response
 
 def saveText(phone_number: str, content: str):
-    if Client.isNew(phone_number):
+    if Client.isNew(phone_number):  # checks if number is new client or not
         Message.registerMsgs(phone_number, content)
         Client.registerClient(phone_number)
-        send_response(msg(phone_number, "Bienvenido a Lian Accesorios ☺️, Enviamos captura pantalla de los productos que viste en live y quieres adquirir. El monto mínimo para separar tus productos es de 30 soles !!"))
+        send_response(plain_txt(phone_number, welcome_msg))
         
     else:
         clientInstance = Client.get_one(phone_number)
@@ -15,10 +16,9 @@ def saveText(phone_number: str, content: str):
 
     
         if "status" in content:
-            send_response(msg(phone_number, "status changed"))
+            send_response(plain_txt(phone_number, "status changed"))
             Client.update_status(phone_number, "client")
             
-        
         elif "id" in content:
-            send_response(msg(phone_number, "id generated"))
+            send_response(plain_txt(phone_number, "id generated"))
             Client.update_lastOrder_id(phone_number, 12089)
