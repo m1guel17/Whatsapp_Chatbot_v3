@@ -22,6 +22,7 @@ def saveText(phone_number: str, content: str):
             Client.update_status(phone_number, "intention of payment")
         
         else:
-            Message.update_by_phone(phone_number, content)
+            if clientInstance.status != "intention of payment":
+                Message.update_by_phone(phone_number, content)
             
             

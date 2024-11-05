@@ -5,4 +5,4 @@ instance/
 venv/
 structure.txt
 app/stack/mock
-app/server/
+app/stack/misc/
