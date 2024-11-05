@@ -8,13 +8,13 @@ def receive_message(req_data):
             req_data = request.get_json()
             # Plce the register raw her in case you want to see the sent/delivered/read status 
             msg_object = req_data.get("entry", [{}])[0].get("changes", [{}])[0].get("value", {}).get("messages", [])
-            Raw.registerRaw(req_data)
             
             if msg_object:
                 messages = msg_object[0]
 
                 if "type" in messages:
                     type = messages["type"]
+                    Raw.registerRaw(req_data)
                     
                     if type == "interactive":
                         interactive_type = messages["interactive"]["type"]
