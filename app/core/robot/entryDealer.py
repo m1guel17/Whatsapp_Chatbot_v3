@@ -5,8 +5,8 @@ from flask import request, jsonify
 
 def receive_message(req_data):
         try:
-            #Raw.registerRaw(req_data)
             req_data = request.get_json()
+            Raw.registerRaw(req_data)
             msg_object = req_data.get("entry", [{}])[0].get("changes", [{}])[0].get("value", {}).get("messages", [])
             
             if msg_object:
