@@ -15,32 +15,22 @@ class MessageRepository:
         
         .. versionchanged:: 2.0
         """
+        sentAt = datetime.utcnow()
+        
+        lastChat_ = MessagesModel.query.filter_by(phone_number=phone_number).order_by(MessagesModel.id.desc()).first()
+        MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt, chat=lastChat_.chat)
+        
+        lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
+        lastMessageInstance.content = content
+        lastMessageInstance.sent_at = sentAt
+        
         if status:
-            sentAt = datetime.utcnow()
-            
-            lastChat_ = MessagesModel.query.filter_by(phone_number=phone_number).order_by(MessagesModel.id.desc()).first()
-            MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt, chat=lastChat_.chat)
-            
-            lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
-            lastMessageInstance.content = content
-            lastMessageInstance.sent_at = sentAt
             lastMessageInstance.status = status
-            
-            db.session.add_all([MessageInstance,lastMessageInstance])
-            db.session.commit()
         else:
-            sentAt = datetime.utcnow()
-            
-            lastChat_ = MessagesModel.query.filter_by(phone_number=phone_number).order_by(MessagesModel.id.desc()).first()
-            MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt, chat=lastChat_.chat)
-            
-            lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
-            lastMessageInstance.content = content
-            lastMessageInstance.sent_at = sentAt
             lastMessageInstance.status = "message received"
             
-            db.session.add_all([MessageInstance,lastMessageInstance])
-            db.session.commit()
+        db.session.add_all([MessageInstance, lastMessageInstance])
+        db.session.commit()
             
     @staticmethod
     def in_and_out_msg(phone_number: str, status: str):

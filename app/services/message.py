@@ -31,8 +31,12 @@ class Message:
 
     # ================================= UPDATE =================================
     @staticmethod
-    def update_by_phone(phone_number: str, content: str):
-        msgUpdate.by_phone(phone_number, content)
+    def update_by_phone(phone_number: str, content: str, status: str = None):
+        if status:
+            msgUpdate.by_phone(phone_number, content, status)
+        else:
+            msgUpdate.by_phone(phone_number, content)
+            
         
     @staticmethod
     def update_in_and_out(phone_number: str, status: str):
