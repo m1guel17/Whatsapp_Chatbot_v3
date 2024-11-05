@@ -1,1 +1,0 @@
-welcome_msg = "Bienvenido a Lian Accesorios ☺️, Enviamos captura pantalla de los productos que viste en live y quieres adquirir. El monto mínimo para separar tus productos es de 30 soles !!" # replace with environment variable or txt file or database
