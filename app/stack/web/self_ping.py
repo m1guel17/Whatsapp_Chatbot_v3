@@ -17,15 +17,12 @@ def start_scheduler(app):
 
 def schedule_next_ping(app, scheduler):
     # Generate a random interval (e.g., between 1 and 5 minutes)
-    global active_job
-    if active_job:
-        active_job.remove()
 
     random_minutes = random.randint(1, 4)
     next_run_time = datetime.now() + timedelta(minutes=random_minutes)
 
     # Schedule the ping_app function to run at next_run_time
-    active_job  = scheduler.add_job(func=lambda: ping_app(app, scheduler, random_minutes), trigger=DateTrigger(run_date=next_run_time))
+    scheduler.add_job(func=lambda: ping_app(app, scheduler, random_minutes),trigger=DateTrigger(run_date=next_run_time))
 
 def ping_app(app, scheduler, random_minutes):
     with app.app_context():
