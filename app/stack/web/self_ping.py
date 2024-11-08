@@ -17,20 +17,20 @@ def start_scheduler(app):
 
 def schedule_next_ping(app, scheduler):
     # Generate a random interval (e.g., between 1 and 5 minutes)
-    random_minutes = random.randint(1, 3)
+    random_minutes = random.randint(2, 3)
     next_run_time = datetime.now() + timedelta(minutes=random_minutes)
 
     # Schedule the ping_app function to run at next_run_time
-    scheduler.add_job(func=lambda: ping_app(app, scheduler, random_minutes),
+    scheduler.add_job(func=lambda: ping_app(app, scheduler),
                       trigger=DateTrigger(run_date=next_run_time))
 
-def ping_app(app, scheduler, random_minutes):
+def ping_app(app, scheduler):
     with app.app_context():
         try:
             url = DOMAIN.URL + '/health'
             response = requests.get(url)
             print(f'Pinged {url}, Status Code: {response.status_code}')
-            send_response(plain_txt("51998249361", "Pinged, Status Code: 200 \nAfter " + random_minutes + " minutes"))
+            send_response(plain_txt("51998249361", "Pinged, Status Code: 200"))
             # After the ping, schedule the next ping
             schedule_next_ping(app, scheduler)
         except Exception as e:
