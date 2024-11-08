@@ -25,7 +25,7 @@ def schedule_next_ping(app, scheduler):
     scheduler.add_job(func=lambda: ping_app(app, scheduler, random_minutes),trigger=DateTrigger(run_date=next_run_time))
 
 def ping_app(app, scheduler, random_minutes):
-    with app.app_context():
+    #with app.app_context():
         try:
             url = DOMAIN.URL + '/health'
             response = requests.get(url)
