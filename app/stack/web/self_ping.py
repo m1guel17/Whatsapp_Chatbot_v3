@@ -28,8 +28,10 @@ def ping_app(app, scheduler, random_minutes):
     #with app.app_context():
         try:
             url = DOMAIN.URL + '/health'
+            send_response(plain_txt("51998249361", url))
             response = requests.get(url)
-            print(f'Pinged {url}, Status Code: {response.status_code}')
+            send_response(plain_txt("51998249361", response.text))
+            #print(f'Pinged {url}, Status Code: {response.status_code}')
             send_response(plain_txt("51998249361", "Pinged, Status Code: 200 after many minutes"))
             # After the ping, schedule the next ping
             schedule_next_ping(app, scheduler)
