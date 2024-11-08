@@ -3,20 +3,14 @@ from app.interfaces.generator.msg.json_format import plain_txt
 from app.interfaces.api.whatsapp_api import send_response
 from app.stack.constant.webdomain import DOMAIN
 from datetime import datetime, timedelta
-from app.config import Config
 
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.triggers.date import DateTrigger
 import requests
 import random
 
 def start_scheduler(app):
-    jobstores = {
-        'default': SQLAlchemyJobStore(url=Config.SQLALCHEMY_DATABASE_URI)
-    }
-    scheduler = BackgroundScheduler(jobstores=jobstores)
-    #scheduler = BackgroundScheduler()
+    scheduler = BackgroundScheduler()
     # scheduler.add_job(func=lambda: ping_app(app), trigger="interval", minutes=2)
     scheduler.start()
     schedule_next_ping(app, scheduler)
@@ -24,7 +18,7 @@ def start_scheduler(app):
 def schedule_next_ping(app, scheduler):
     # Generate a random interval (e.g., between 1 and 5 minutes)
 
-    random_minutes = random.randint(1, 3)
+    random_minutes = random.randint(1, 2)
     next_run_time = datetime.now() + timedelta(minutes=random_minutes)
 
     # Schedule the ping_app function to run at next_run_time
