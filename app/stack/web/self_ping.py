@@ -27,7 +27,7 @@ def schedule_next_ping(app, scheduler):
 def ping_app(app, scheduler, random_minutes):
     try:
         url = DOMAIN.URL + '/health'
-        #send_response(plain_txt("51998249361", url))
+        send_response(plain_txt("51998249361", url))
         response = requests.get(url)
         #send_response(plain_txt("51998249361", response.text))
         #print(f'Pinged {url}, Status Code: {response.status_code}')
@@ -36,7 +36,8 @@ def ping_app(app, scheduler, random_minutes):
         # schedule_next_ping(app, scheduler)
     except Exception as e:
         print(f'Error pinging the app: {e}')
-        send_response(plain_txt("51998249361", "Ping failed"))
+        #send_response(plain_txt("51998249361", "Ping failed"))
+        send_response(plain_txt("51998249361", url + "failed"))
         
     finally:# Even if there's an error, schedule the next ping
         schedule_next_ping(app, scheduler)
