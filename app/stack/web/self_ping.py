@@ -19,7 +19,7 @@ def start_scheduler(app):
 def schedule_next_ping(app, scheduler):
     # Generate a random interval (e.g., between 1 and 5 minutes)
 
-    random_minutes = random.randint(1, 2)
+    random_minutes = random.randint(2, 4)
     next_run_time = datetime.now() + timedelta(minutes=random_minutes)
 
     # Schedule the ping_app function to run at next_run_time
@@ -30,7 +30,7 @@ def ping_app(app, scheduler, random_minutes):
         pid = os.getpid()
         url = DOMAIN.URL + '/health'
         response = requests.get(url)
-        send_response(plain_txt("51998249361", f'Pinged, Status Code: 200 / after x minutes {pid}'))
+        send_response(plain_txt("51998249361", f'Pinged, Status Code: 200 / after {random_minutes} minutes {pid}'))
         schedule_next_ping(app, scheduler)
     except Exception as e:
         print(f'Error pinging the app: {e}')
