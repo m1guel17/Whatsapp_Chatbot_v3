@@ -8,6 +8,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.date import DateTrigger
 import requests
 import random
+import os
 
 def start_scheduler(app):
     scheduler = BackgroundScheduler()
@@ -26,17 +27,13 @@ def schedule_next_ping(app, scheduler):
 
 def ping_app(app, scheduler, random_minutes):
     try:
+        pid = os.getpid()
         url = DOMAIN.URL + '/health'
-        send_response(plain_txt("51998249361", url))
         response = requests.get(url)
-        #send_response(plain_txt("51998249361", response.text))
-        #print(f'Pinged {url}, Status Code: {response.status_code}')
-        send_response(plain_txt("51998249361", "Pinged, Status Code: 200 / after x minutes"))
-        # After the ping, schedule the next ping
+        send_response(plain_txt("51998249361", f'Pinged, Status Code: 200 / after x minutes {pid}'))
         schedule_next_ping(app, scheduler)
     except Exception as e:
         print(f'Error pinging the app: {e}')
-        #send_response(plain_txt("51998249361", "Ping failed"))
         send_response(plain_txt("51998249361", "Ping failed"))
         schedule_next_ping(app, scheduler)
         
