@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes Log</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/all_messages.css') }}">
+
+</head>
+<body>
+    <h2>Registro de Mensajes</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Numero</th>
+            <th>Mensaje</th>
+            <th>Chat</th>
+            <th>Fecha y Hora</th>
+        </tr>
+        {%for registro in registros %}
+            <tr>
+                <td>{{registro.id}}</td>
+                <td>{{registro.phone_number}}</td>
+                <td>{{registro.content}}</td>
+                <td>{{registro.chat}}</td>
+                <td>{{registro.sent_at}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h2>Últimos Mensajes</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Numero</th>
+            <th>Mensaje</th>
+            <th>Fecha y Hora</th>
+            <th>Estado</th>
+        </tr>
+        {%for last in lasts %}
+            <tr>
+                <td>{{last.id}}</td>
+                <td>{{last.phone_number}}</td>
+                <td>{{last.content}}</td>
+                <td>{{last.sent_at}}</td>
+                <td>{{last.status}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h2>Clientes</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Numero</th>
+            <th>Estado</th>
+            <th>Fecha y Hora</th>
+            <th>ID Última Orden</th>
+            <th>Fecha y Hora Última Orden</th>
+        </tr>
+        {%for client in clients %}
+            <tr>
+                <td>{{client.id}}</td>
+                <td>{{client.name}}</td>
+                <td>{{client.phone_number}}</td>
+                <td>{{client.status}}</td>
+                <td>{{client.created_at}}</td>
+                <td>{{client.lastOrder_id}}</td>
+                <td>{{client.lastOrder_on}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h2>Raw messages</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Contenido</th>
+            <th>Fecha y Hora</th>
+        </tr>
+        {%for raw in raws %}
+            <tr>
+                <td>{{raw.id}}</td>
+                <td>{{raw.content}}</td>
+                <td>{{raw.sent_at}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

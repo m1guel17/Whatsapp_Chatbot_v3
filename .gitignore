@@ -1,0 +1,9 @@
+__pycache__/
+app/__pycache__/
+flask_session/
+instance/
+venv/
+structure.txt
+app/stack/mock
+app/stack/misc/
+app/stack/constant/messages_draft.py
