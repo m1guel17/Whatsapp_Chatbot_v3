@@ -7,3 +7,4 @@ structure.txt
 app/stack/mock
 app/stack/misc/
 app/stack/constant/messages_draft.py
+test.py

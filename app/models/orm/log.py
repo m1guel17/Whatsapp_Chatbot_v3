@@ -16,6 +16,6 @@ class LogModel(db.Model):
     funcName = db.Column(db.String(50), nullable=False)
     property = db.Column(db.String(15), nullable=False)
     logContent = db.Column(db.Text, nullable=False)
-    executedAt = db.Column(db.DateTime, default=datetime.utcnow)
+    executedAt = db.Column(db.DateTime, default=datetime.now)
     executedBy = db.Column(db.Text, default="Admin") 
 

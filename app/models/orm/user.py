@@ -22,6 +22,6 @@ class UserModel(db.Model):
     password_hash = db.Column(db.String(128), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
     status = db.Column(db.String(15), unique=False, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.now)
     modified_on = db.Column(db.DateTime, nullable=True)
 

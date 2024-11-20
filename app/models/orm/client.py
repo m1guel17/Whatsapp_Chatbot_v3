@@ -16,6 +16,7 @@ class ClientModel(db.Model):
     name = db.Column(db.String(50), nullable=True)
     phone_number = db.Column(db.String(15), unique=False, nullable=False)
     status = db.Column(db.Text, unique=False, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.now)
+    last_interaction = db.Column(db.DateTime, default=datetime.now)
     lastOrder_id = db.Column(db.Integer, nullable=True)
     lastOrder_on = db.Column(db.DateTime, nullable=True)
