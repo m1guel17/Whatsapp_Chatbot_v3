@@ -11,7 +11,7 @@ import requests
 import random
 import os
 
-def start_scheduler(app):
+def ping_scheduler(app):
     scheduler = BackgroundScheduler()
     # scheduler.add_job(func=lambda: ping_app(app), trigger="interval", minutes=2)
     scheduler.start()

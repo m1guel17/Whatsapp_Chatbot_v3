@@ -13,7 +13,7 @@ class RawRepository:
 
         .. versionchanged:: 0.1
         """
-        sentAt = datetime.utcnow()
+        sentAt = datetime.now()
         
         rawInstance = RawModel(content=json.dumps(inbound), sent_at=sentAt)
         

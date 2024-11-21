@@ -1,7 +1,7 @@
 from flask import Flask
 from app.models.database.db import db
 from app.config import Config
-from app.stack.web.self_ping import start_scheduler
+from app.stack.web.self_ping import ping_scheduler
 
 def create_app():
     app = Flask(__name__, template_folder = "./web/templates", static_folder = "./web/static")
@@ -15,6 +15,6 @@ def create_app():
         
         db.create_all()
         
-        start_scheduler(app) # scheduler for ping to the domain
+        # ping_scheduler(app) # scheduler for ping to the domain
 
     return app

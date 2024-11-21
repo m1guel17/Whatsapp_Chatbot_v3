@@ -14,7 +14,7 @@ class MessageRepository:
 
         .. versionchanged:: 0.3
         """
-        sentAt = datetime.utcnow()
+        sentAt = datetime.now()
         
         messageInstance = MessagesModel(phone_number=phone_number, content=content, chat=1, sent_at=sentAt)
         lastmessageInstance = LastMessageModel(phone_number=phone_number, content=content, sent_at=sentAt, status="new chat")

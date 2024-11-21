@@ -15,7 +15,7 @@ class MessageRepository:
         
         .. versionchanged:: 2.0
         """
-        sentAt = datetime.utcnow()
+        sentAt = datetime.now()
         
         lastChat_ = MessagesModel.query.filter_by(phone_number=phone_number).order_by(MessagesModel.id.desc()).first()
         MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt, chat=lastChat_.chat)
@@ -41,7 +41,7 @@ class MessageRepository:
         
         .. versionchanged:: 0.2
         """
-        sentAt = datetime.utcnow()
+        sentAt = datetime.now()
         
         lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
         lastMessageInstance.sent_at = sentAt

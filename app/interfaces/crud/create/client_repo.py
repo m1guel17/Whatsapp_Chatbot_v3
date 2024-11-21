@@ -12,7 +12,7 @@ class ClientRepository:
 
         .. versionchanged:: 0.5
         """
-        clientInstance = ClientModel(phone_number=phone_number, status="potential client", created_at=datetime.utcnow())
+        clientInstance = ClientModel(phone_number=phone_number, status="potential client", created_at=datetime.now())
 
         db.session.add(clientInstance)
         db.session.commit()
