@@ -7,11 +7,12 @@ from datetime import datetime, timedelta
 from flask import current_app
 
 def check_inactive_users():
-    now = datetime.now()
-    timeout = now - timedelta(minutes=3)
-    inactive_clients = ClientModel.query.filter(ClientModel.last_interaction < timeout).all()
+    with current_app.app_context():
+        now = datetime.now()
+        timeout = now - timedelta(minutes=3)
+        inactive_clients = ClientModel.query.filter(ClientModel.last_interaction < timeout).all()
 
-    for client in inactive_clients:
-        send_response(plain_txt(client.phone_number, "INACTIVE"))
-        client.last_interaction = datetime.now()
-        db.session.commit()
+        for client in inactive_clients:
+            send_response(plain_txt(client.phone_number, "INACTIVE"))
+            client.last_interaction = datetime.now()
+            db.session.commit()
