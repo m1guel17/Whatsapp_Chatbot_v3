@@ -13,17 +13,13 @@ import os
 
 def ping_scheduler(app):
     scheduler = BackgroundScheduler()
-    # scheduler.add_job(func=lambda: ping_app(app), trigger="interval", minutes=2)
     scheduler.start()
     schedule_next_ping(app, scheduler)
 
 def schedule_next_ping(app, scheduler):
-    # Generate a random interval (e.g., between 1 and 5 minutes)
-
     random_minutes = random.randint(2, 4)
     next_run_time = datetime.now() + timedelta(minutes=random_minutes)
 
-    # Schedule the ping_app function to run at next_run_time
     scheduler.add_job(func=lambda: ping_app(app, scheduler, random_minutes),trigger=DateTrigger(run_date=next_run_time))
 
 def ping_app(app, scheduler, random_minutes):
@@ -33,6 +29,7 @@ def ping_app(app, scheduler, random_minutes):
         response = requests.get(url)
         send_response(plain_txt(HOST.number, f'Pinged, Status Code: 200 / after {random_minutes} minutes {pid}'))
         schedule_next_ping(app, scheduler)
+        
     except Exception as e:
         print(f'Error pinging the app: {e}')
         send_response(plain_txt(HOST.number, "Ping failed"))

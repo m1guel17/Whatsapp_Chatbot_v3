@@ -22,6 +22,7 @@ def ping_app(app):
         url = DOMAIN.URL + '/health'
         response = requests.get(url)
         send_response(plain_txt(HOST.number, f'Pinged, Status Code: 200 / after 2 minutes {pid}'))
+        
     except Exception as e:
         print(f'Error pinging the app: {e}')
         send_response(plain_txt(HOST.number, "Ping failed"))
