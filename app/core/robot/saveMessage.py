@@ -26,7 +26,7 @@ def saveText(phone_number: str, content: str):
         
         if "email" in content.lower():
             Message.update_by_phone(phone_number, content, "Check email")
-            notify_owner_about_deal("John Doe", "123456789", os.environ.get('RECEIVER_EMAIL'))
+            notify_owner_about_deal("John Doe", "123456789", os.environ.get('RECEIVER_EMAIL')) # this is jsut for testing
         
         else:
             if clientInstance.status != "intention of payment":
