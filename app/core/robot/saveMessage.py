@@ -5,6 +5,8 @@ from app.core.jobs.closeDeal import notify_owner_about_deal
 from app.services import Message
 from app.services import Client
 
+import os
+
 def saveText(phone_number: str, content: str):
     if Client.isNew(phone_number):  # checks if number is new client or not
         Message.registerMsgs(phone_number, content)
@@ -24,7 +26,7 @@ def saveText(phone_number: str, content: str):
         
         if "email" in content.lower():
             Message.update_by_phone(phone_number, content, "Check email")
-            notify_owner_about_deal("John Doe", "123456789", "owner@example.com")
+            notify_owner_about_deal("John Doe", "123456789", os.environ.get('RECEIVER_EMAIL'))
         
         else:
             if clientInstance.status != "intention of payment":
