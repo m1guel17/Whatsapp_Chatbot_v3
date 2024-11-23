@@ -1,9 +1,8 @@
-import os
-import smtplib
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from typing import List, Optional
-
+from email.mime.text import MIMEText
+from typing import List
+import smtplib
+import os
 
 def send_email(subject: str, message_body: str, receiver_emails: List[str], additional_info: dict | None):
     """
@@ -20,8 +19,8 @@ def send_email(subject: str, message_body: str, receiver_emails: List[str], addi
         Exception: For other errors during email sending.
     """
     try:
-        sender_email = os.environ.get('email')
-        sender_password = os.environ.get('pwdEmail')
+        sender_email = os.environ.get('EMAIL')
+        sender_password = os.environ.get('PASSWORDEMAIL')
         if not sender_email or not sender_password:
             print("Environment variables 'email' and 'pwdEmail' must be set.")
 
@@ -52,5 +51,6 @@ def send_email(subject: str, message_body: str, receiver_emails: List[str], addi
 
     except ValueError as ve:
         print(f"Validation error: {ve}")
+        
     except Exception as e:
         print(f"An error occurred while sending the email: {e}")
