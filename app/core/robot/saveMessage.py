@@ -14,7 +14,7 @@ def saveText(phone_number: str, content: str):
         clientInstance = Client.get_one(phone_number)
     	
         if clientInstance.status == "intention of payment":
-            send_response(plain_txt(phone_number, "Hemos recibido tu información en unos minutos alguien se comunicará contigo, muchas gracias"))
+            send_response(plain_txt(phone_number, "Information received"))
             Message.update_by_phone(phone_number, content, "Check email")
             
         if "pagar" in content.lower():

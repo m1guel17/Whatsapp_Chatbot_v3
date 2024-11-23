@@ -11,13 +11,13 @@ def plain_txt(phone_number, message):
     }
     return msg
 
-def button(number, text, footer, id, options):
+def button(number, text, footer, options, branch):
     buttons = []
     for i in range(len(options)):
         button_ = {
             "type": "reply",
             "reply": {
-                "id": id[i],
+                "id": f"{branch}{i+1}",
                 "title": options[i]
             }
         }

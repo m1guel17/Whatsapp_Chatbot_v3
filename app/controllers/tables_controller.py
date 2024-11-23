@@ -12,7 +12,6 @@ def tablesRoutes(app):
         raws = Raw.get_all()
             
         return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients, raws=raws)
-        #return render_template('all_messages.html', clients=clients)
     
     @app.route('/tables', methods=['GET', 'POST'])
     def tables():
