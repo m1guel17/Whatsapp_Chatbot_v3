@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes Log</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/all_messages.css') }}">
+
+</head>
+<body>
+    <h2>Raw messages</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Contenido</th>
+            <th>Fecha y Hora</th>
+        </tr>
+        {%for raw in raws %}
+            <tr>
+                <td>{{raw.id}}</td>
+                <td>{{raw.content}}</td>
+                <td>{{raw.sent_at}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

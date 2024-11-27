@@ -9,9 +9,14 @@ def tablesRoutes(app):
         clients = Client.get_all()
         messages = Message.get_all()
         lasts = Message.fetch_last_msgs()
+            
+        return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients)
+    
+    @app.route('/raw')
+    def raw():
         raws = Raw.get_all()
             
-        return render_template('all_messages.html', registros=messages, lasts=lasts, clients=clients, raws=raws)
+        return render_template('raw.html', raws=raws)
     
     @app.route('/tables', methods=['GET', 'POST'])
     def tables():
