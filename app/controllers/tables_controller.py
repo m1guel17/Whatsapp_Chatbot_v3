@@ -4,7 +4,7 @@ from app.services import Client, Message, Raw
 from app import db
 
 def tablesRoutes(app):
-    @app.route('/', methods=['GET', 'POST'])
+    @app.route('/')
     def index():
         clients = Client.get_all()
         messages = Message.get_all()
@@ -18,7 +18,7 @@ def tablesRoutes(app):
             
         return render_template('raw.html', raws=raws)
     
-    @app.route('/tables', methods=['GET', 'POST'])
+    @app.route('/tables')
     def tables():
         tables_info = {}
         for table_name, table in db.metadata.tables.items():
