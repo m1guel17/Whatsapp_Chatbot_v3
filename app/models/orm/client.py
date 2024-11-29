@@ -10,7 +10,7 @@ class ColumnNames:
     LASTORDER_ON= "lastOrder_on"
 
 class ClientModel(db.Model):
-    __tablename__ = 'client'
+    __tablename__ = 'clients'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=True)
@@ -20,3 +20,4 @@ class ClientModel(db.Model):
     last_interaction = db.Column(db.DateTime, default=datetime.now)
     lastOrder_id = db.Column(db.Integer, nullable=True)
     lastOrder_on = db.Column(db.DateTime, nullable=True)
+    isActive = db.Column(db.Boolean, default=True)
