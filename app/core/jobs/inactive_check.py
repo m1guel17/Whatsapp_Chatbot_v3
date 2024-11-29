@@ -13,11 +13,15 @@ def inactivity_schedule(app):
     
 def check_inactive_users(app):
     with app.app_context():
-        now = datetime.now()
+        now = datetime.now() #
         wait_threshold = datetime.now() - timedelta(minutes=2)
         inactive_clients = ClientModel.query.filter(ClientModel.last_interaction <= wait_threshold,  ClientModel.status != "chat inactive").all()
 
         for client in inactive_clients:
+            refresh = ClientModel.query.filter(ClientModel.last_interaction == client.phone_number).order_by(ClientModel.id.desc()).first() #
+            if refresh.last_interaction > wait_threshold: #
+                continue #
+            
             send_response(plain_txt(client.phone_number, "INACTIVE"))
             client.last_interaction = datetime.now()
             client.status = "chat inactive"

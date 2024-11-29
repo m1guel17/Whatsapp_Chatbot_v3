@@ -11,9 +11,14 @@ def saveText(phone_number: str, content: str): # chatflow mock, pending improvem
     if Client.isNew(phone_number):  # checks if number is new client or not
         Message.registerMsgs(phone_number, content)
         Client.registerClient(phone_number)
-        send_response(plain_txt(phone_number, "welcome"))
+        send_response(plain_txt(phone_number, "welcome")) # replace with custom welcome message
         
     else:
+        if "email" in content.lower():
+            Message.update_by_phone(phone_number, content, "Check email")
+            Client.update_status(phone_number, "email sent")
+            notify_owner_about_deal("John Doe", "123456789", os.environ.get('RECEIVER_EMAIL')) # this is just for testing
+            
         clientStatus = Client.get_one(phone_number).status
         match clientStatus:
             case "potential client":
@@ -22,12 +27,9 @@ def saveText(phone_number: str, content: str): # chatflow mock, pending improvem
                     Client.update_status(phone_number, "intention of payment")
                     send_response(plain_txt(phone_number, "payment"))
                 
-                if "email" in content.lower():
-                    Message.update_by_phone(phone_number, content, "Check email")
-                    Client.update_status(phone_number, "email sent")
-                    notify_owner_about_deal("John Doe", "123456789", os.environ.get('RECEIVER_EMAIL')) # this is jsut for testing
-    
-                send_response(plain_txt(phone_number, "potential"))
+                else:
+                    Message.update_by_phone(phone_number, content)
+                    send_response(plain_txt(phone_number, "potential"))
                 
             case "intention of payment":
                 Message.update_by_phone(phone_number, content)
