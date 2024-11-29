@@ -7,7 +7,7 @@ __Please note that the logic must be managed from within the code, as this repos
 - **WhatsApp Business Integration**: Seamless integration with the WhatsApp Business API for message handling.
 - **Logging**: Custom logging utility to monitor and track application behavior. (In progress)
 - **Modular Structure**: The project is organized into modular components for better maintainability and scalability.
-- **Web Interface**: Simple HTML-based interface to interact with the chatbot. (In progress)
+- **Web Interface**: Simple HTML-based interface to interact with the database model for the chatbot. (In progress)
 
 # Project Structure
 ```
