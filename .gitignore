@@ -8,4 +8,4 @@ app/stack/mock
 app/stack/misc/
 app/stack/constant/messages_draft.py
 test.py
-app/core/robot/chatflow.json
+app/core/json/chatflow.json

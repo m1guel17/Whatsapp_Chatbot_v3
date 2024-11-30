@@ -18,6 +18,4 @@ class ClientModel(db.Model):
     status = db.Column(db.Text, unique=False, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
     last_interaction = db.Column(db.DateTime, default=datetime.now)
-    lastOrder_id = db.Column(db.Integer, nullable=True)
-    lastOrder_on = db.Column(db.DateTime, nullable=True)
     isActive = db.Column(db.Boolean, default=True)
