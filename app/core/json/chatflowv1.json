@@ -1,0 +1,133 @@
+{
+	"nodes": {
+		"100": {
+			"type": "text",
+			"text": {
+				"preview_url": false,
+				"body": "MENSAJE BIENVENIDA"
+			},
+			"next": {
+				"101": "default"
+			},
+			"status": "new"
+		},
+		"101": {
+			"type": "text",
+			"text": {
+				"preview_url": false,
+				"body": "LINK DE PÁGINA WEB"
+			},
+			"next": {
+				"default": "102"
+			},
+			"status": "requesting Order"
+		},
+		"102": {
+			"type": "text",
+			"text": {
+				"preview_url": false,
+				"body": "RESUMEN DE COMPRA"
+			},
+			"next": {
+				"default": "103"
+			},
+			"status": "Choosing payments"
+		},
+		"103": {
+			"_comment": "Límite máximo de 3 botones",
+			"__comment": "Drop next & status",
+			"type": "interactive",
+			"interactive": {
+				"type": "button",
+				"body": {
+					"text": "Escoja método de pago"
+				},
+				"action": {
+					"buttons": [
+						{
+							"type": "reply",
+							"reply": {
+								"id": "<UNIQUE_BUTTON_ID_1>",
+								"title": "<BUTTON_TITLE_1>"
+							}
+						},
+						{
+							"type": "reply",
+							"reply": {
+								"id": "104",
+								"title": "Yape"
+							}
+						},
+						{
+							"type": "reply",
+							"reply": {
+								"id": "105",
+								"title": "Transferencia"
+							}
+						}
+					]
+				}
+			},
+			"next": {
+				"Yape": "104",
+				"Transferencia": "105"
+			},
+			"status": "Choosing payments"
+		},
+		"104": {
+			"type": "text",
+			"text": {
+				"preview_url": false,
+				"body": "DATOS DE YAPE"
+			},
+			"next": {
+				"default": "106"
+			},
+			"status": "Payment chosen"
+		},
+		"105": {
+			"type": "text",
+			"text": {
+				"preview_url": false,
+				"body": "DATOS DE TRANSFERENCIA"
+			},
+			"next": {
+				"default": "106"
+			},
+			"status": "Payment chosen"
+		},
+		"106": {
+			"type": "text",
+			"text": {
+				"preview_url": false,
+				"body": "RECIBIMOS LA IMAGEN, POR FAVOR DEJA TU INFORMACIÓN:\nINDIQUE SU INFORMACIÓN PARA EL ENVÍO\n1. DIRECCIÓN\n2. REFERENCIA\n3. CONSIDERACIONES\nCUANDO TERMINE DE ENVIAR SU INFORMACIÓN ESCRIBA 'PEDIR'"
+			},
+			"next": {
+				"default": "107"
+			},
+			"status": "Getting information"
+		},
+		"107": {
+			"type": "text",
+			"text": {
+				"preview_url": false,
+				"body": "GRACIAS POR REALIZAR TU COMPRA, EN UNOS MINUTOS UN AGENTE SE COMUNICARÁ CONTIGO PARA REALIZAR EL SEGUIMIENTO."
+			},
+			"next": {
+				"default": "108"
+			},
+			"status": "Check email"
+		},
+		"108": {
+			"type": "text",
+			"text": {
+				"preview_url": false,
+				"body": "END"
+			},
+			"next": {
+				"default": "100"
+			},
+			"status": "Closed"
+		}
+	}
+}
