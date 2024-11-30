@@ -25,4 +25,3 @@ class LastMessageModel(db.Model):
     content = db.Column(db.Text, nullable=False)
     sent_at = db.Column(db.DateTime, default=datetime.now)
     status = db.Column(db.Text, nullable=False)
-    isActive = db.Column(db.Boolean, default=True)

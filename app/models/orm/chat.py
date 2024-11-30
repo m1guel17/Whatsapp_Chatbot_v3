@@ -18,20 +18,6 @@ class ChatModel(db.Model):
     status = db.Column(db.String(15), unique=False, nullable=False, default="OPEN")
     currentNode = db.Column(db.String(15), nullable=False, default="100")
     startedAt = db.Column(db.DateTime, default=datetime.now)
-    nextNode = db.Column(JSON, nullable=False)
+    nextNode = db.Column(db.String(15), nullable=True)
     updatedAt = db.Column(db.DateTime, default=datetime.now)
     isActive = db.Column(db.Boolean, default=True)
-
-    def __init__(self, nextNode):
-        if isinstance(nextNode, str):
-            self.nextNode = [nextNode]
-            
-        elif isinstance(nextNode, list) and all(isinstance(item, str) for item in nextNode):
-            if len(nextNode) >= 2:
-                self.nextNode = nextNode
-                
-            else:
-                raise ValueError("List must contain at least 2 strings.")
-            
-        else:
-            raise ValueError("Data must be a string or a list of 2 or more strings.")
