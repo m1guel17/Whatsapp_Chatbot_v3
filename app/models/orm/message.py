@@ -11,18 +11,22 @@ class MessagesModel(db.Model):
     __tablename__ = 'messages'
 
     id = db.Column(db.Integer, primary_key=True)
-    phone_number = db.Column(db.String(15), unique=False, nullable=False)
+    conversation_id = db.Column(db.Integer, db.ForeignKey('conversations.id'), nullable=False)
+    # phone_number = db.Column(db.String(15), unique=False, nullable=False)
     content = db.Column(db.Text, nullable=False)
-    chat = db.Column(db.Integer, nullable=True)
     sent_at = db.Column(db.DateTime, default=datetime.now)
-    node_id = db.Column(db.String(15), unique=False, nullable=True, default="100")
+    # node_id = db.Column(db.String(15), unique=False, nullable=True, default="100")
     isActive = db.Column(db.Boolean, default=True)
 
 class LastMessageModel(db.Model):
     __tablename__ = 'messagesLast'
 
     id = db.Column(db.Integer, primary_key=True)
-    phone_number = db.Column(db.String(15), unique=True, nullable=False)
+    conversation_id = db.Column(db.Integer, db.ForeignKey('conversation_model.id'), nullable=False)
     content = db.Column(db.Text, nullable=False)
+    message_type = db.Column(db.String(50), default='text')
     sent_at = db.Column(db.DateTime, default=datetime.now)
     status = db.Column(db.Text, nullable=False)
+    # phone_number = db.Column(db.String(15), unique=True, nullable=False)
+    conversation = db.relationship('ConversationModel', backref=db.backref('messages', lazy=True))
+    

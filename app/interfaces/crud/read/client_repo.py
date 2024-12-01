@@ -1,4 +1,4 @@
-from app.models.orm.client import CustomersModel
+from app.models.orm.client import CustomerModel
 from app import db
 
 class ClientRepository:
@@ -10,7 +10,7 @@ class ClientRepository:
         
         .. versionchanged:: 0.2
         """
-        return CustomersModel.query.filter_by(phone_number=phone_number).first() is None
+        return CustomerModel.query.filter_by(phone_number=phone_number).first() is None
 
     @staticmethod
     def get_all():
@@ -18,7 +18,7 @@ class ClientRepository:
         
         .. versionchanged:: 0.1
         """
-        return CustomersModel.query.all()
+        return CustomerModel.query.all()
     
     @staticmethod
     def getByPhone(phone_number: str):
@@ -26,4 +26,4 @@ class ClientRepository:
         
         .. versionchanged:: 0.1
         """
-        return CustomersModel.query.filter_by(phone_number=phone_number).first()
+        return CustomerModel.query.filter_by(phone_number=phone_number).first()

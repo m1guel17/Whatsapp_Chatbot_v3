@@ -2,7 +2,7 @@ from app import db
 
 from datetime import datetime
 
-class ChatflowModel(db.Model):
+class ConversationVariable(db.Model):
     __tablename__ = 'chatflows'
 
     id = db.Column(db.Integer, primary_key=True)
