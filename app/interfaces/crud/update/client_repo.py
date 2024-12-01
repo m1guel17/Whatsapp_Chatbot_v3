@@ -1,4 +1,4 @@
-from app.models.orm.client import ClientModel
+from app.models.orm.client import CustomersModel
 from app import db
 
 from datetime import datetime
@@ -13,7 +13,7 @@ class ClientRepository:
         
         .. versionchanged:: 0.1
         """
-        clientInstance = ClientModel.query.filter_by(phone_number=phone_number).first()
+        clientInstance = CustomersModel.query.filter_by(phone_number=phone_number).first()
         
         if clientInstance is not None:
             if 'lastOrder_id' in kwargs:

@@ -15,6 +15,7 @@ class MessagesModel(db.Model):
     content = db.Column(db.Text, nullable=False)
     chat = db.Column(db.Integer, nullable=True)
     sent_at = db.Column(db.DateTime, default=datetime.now)
+    node_id = db.Column(db.String(15), unique=False, nullable=True, default="100")
     isActive = db.Column(db.Boolean, default=True)
 
 class LastMessageModel(db.Model):
