@@ -12,7 +12,6 @@ class MessagesModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     conversation_id = db.Column(db.Integer, db.ForeignKey('conversations.id'), nullable=False)
-    # chat = db.Column(db.Integer, nullable=True)
     # phone_number = db.Column(db.String(15), unique=False, nullable=False)
     content = db.Column(db.Text, nullable=False)
     message_type = db.Column(db.String(50), default='text')
