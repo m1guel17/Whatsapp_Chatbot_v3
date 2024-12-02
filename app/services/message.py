@@ -26,6 +26,10 @@ class Message:
         return msgRead.get_all()
     
     @staticmethod
+    def get_by(phone_number: str):
+        return msgRead.getByPhone(phone_number)
+    
+    @staticmethod
     def fetch_last_msgs():
         return msgRead.fetch_last()
 
@@ -36,8 +40,15 @@ class Message:
             msgUpdate.by_phone(phone_number, content, status)
         else:
             msgUpdate.by_phone(phone_number, content)
-            
+    
+    @staticmethod
+    def update_by_phone2(phone_number: str, content: str, message_type: str, node: str):
+        msgUpdate.by_phone2(phone_number, content, message_type, node)
         
+    @staticmethod
+    def update_by_phoneDynamic(phone_number: str, content: str, message_type: str, node: str):
+        msgUpdate.by_phoneDynamic(phone_number, content, message_type, node)
+    
     @staticmethod
     def update_in_and_out(phone_number: str, status: str):
         msgUpdate.in_and_out_msg(phone_number, status)

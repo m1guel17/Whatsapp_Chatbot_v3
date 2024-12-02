@@ -1,5 +1,7 @@
-from app.core.robot.saveMessage import saveText
+# from app.core.robot.saveMessage import saveText
+from app.core.robot.saveMessageTST import saveText
 from app.services import Raw
+from app.services import Message
 
 from flask import request, jsonify
 
@@ -23,17 +25,20 @@ def receive_message(req_data):
                             content = messages["interactive"]["button_reply"]["id"]
                             title = messages["interactive"]["button_reply"]["title"]
                             phone_number = messages["from"]
+                            #Message.registerMsgs(phone_number, content)
                             saveText(phone_number, content)
                             
                         elif interactive_type == "list_reply":
                             content = messages["interactive"]["list_reply"]["id"]
                             title = messages["interactive"]["list_reply"]["title"]
                             phone_number = messages["from"]
+                            #Message.registerMsgs(phone_number, content)
                             saveText(phone_number, content)
                             
                     if "text" in messages:
                         content = messages["text"]["body"]
                         phone_number = messages["from"]
+                        #Message.registerMsgs(phone_number, content)
                         saveText(phone_number, content)
             
             

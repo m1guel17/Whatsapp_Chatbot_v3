@@ -13,31 +13,35 @@
     <table>
         <tr>
             <th>id</th>
+            <th>Chat</th>
             <th>Numero</th>
             <th>Mensaje</th>
-            <th>Chat</th>
+            <th>Tipo</th>
+            <th>Nodo</th>
             <th>Fecha y Hora</th>
         </tr>
         {%for registro in registros %}
             <tr>
                 <td>{{registro.id}}</td>
+                <td>{{registro.chat}}</td>
                 <td>{{registro.phone_number}}</td>
                 <td>{{registro.content}}</td>
-                <td>{{registro.chat}}</td>
+                <td>{{registro.message_type}}</td>
+                <td>{{registro.node}}</td>
                 <td>{{registro.sent_at}}</td>
             </tr>
-        {% endfor %}
-    </table>
-    <h2>Últimos Mensajes</h2>
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Numero</th>
-            <th>Mensaje</th>
-            <th>Fecha y Hora</th>
-            <th>Estado</th>
-        </tr>
-        {%for last in lasts %}
+            {% endfor %}
+        </table>
+        <h2>Últimos Mensajes</h2>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Numero</th>
+                <th>Mensaje</th>
+                <th>Fecha y Hora</th>
+                <th>Estado</th>
+            </tr>
+            {%for last in lasts %}
             <tr>
                 <td>{{last.id}}</td>
                 <td>{{last.phone_number}}</td>
@@ -54,10 +58,10 @@
             <th>Nombre</th>
             <th>Numero</th>
             <th>Estado</th>
-            <th>Creado el</th>
             <th>Última Interacción</th>
-            <th>ID Última Orden</th>
-            <th>Fecha y Hora Última Orden</th>
+            <th>Creado el</th>
+            <th>Actualizado el</th>
+            <th>Activo?</th>
         </tr>
         {%for client in clients %}
             <tr>
@@ -65,10 +69,10 @@
                 <td>{{client.name}}</td>
                 <td>{{client.phone_number}}</td>
                 <td>{{client.status}}</td>
-                <td>{{client.created_at}}</td>
                 <td>{{client.last_interaction}}</td>
-                <td>{{client.lastOrder_id}}</td>
-                <td>{{client.lastOrder_on}}</td>
+                <td>{{client.created_at}}</td>
+                <td>{{client.updated_at}}</td>
+                <td>{{client.isActive}}</td>
             </tr>
         {% endfor %}
     </table>

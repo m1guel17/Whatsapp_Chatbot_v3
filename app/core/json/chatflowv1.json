@@ -7,7 +7,7 @@
 				"body": "MENSAJE BIENVENIDA"
 			},
 			"next": {
-				"101": "default"
+				"default": "101"
 			},
 			"status": "new"
 		},

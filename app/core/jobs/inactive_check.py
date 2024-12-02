@@ -1,6 +1,6 @@
 from app.interfaces.generator.msg.json_format import plain_txt
 from app.interfaces.api.whatsapp_api import send_response
-from app.models.orm.client import ClientModel
+from app.models.orm.customer import CustomerModel
 from app import db
 
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -15,10 +15,10 @@ def check_inactive_users(app):
     with app.app_context():
         now = datetime.now() #
         wait_threshold = datetime.now() - timedelta(minutes=2)
-        inactive_clients = ClientModel.query.filter(ClientModel.last_interaction <= wait_threshold,  ClientModel.status != "chat inactive").all()
+        inactive_clients = CustomerModel.query.filter(CustomerModel.last_interaction <= wait_threshold,  CustomerModel.status != "chat inactive").all()
 
         for client in inactive_clients:
-            refresh = ClientModel.query.filter(ClientModel.last_interaction == client.phone_number).order_by(ClientModel.id.desc()).first() #
+            refresh = CustomerModel.query.filter(CustomerModel.last_interaction == client.phone_number).order_by(CustomerModel.id.desc()).first() #
             if refresh.last_interaction > wait_threshold: #
                 continue #
             

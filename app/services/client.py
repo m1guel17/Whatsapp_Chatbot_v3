@@ -10,7 +10,7 @@ from app.interfaces.crud.update.client_repo import ClientRepository as clientUpd
     >Author: Miguel
 """
 
-class Client:
+class Customer:
     # ================================= CREATE =================================
     @staticmethod
     def registerClient(phone_number: str):        
@@ -26,7 +26,7 @@ class Client:
         return clientRead.get_all()
     
     @staticmethod
-    def get_one(phone_number: str):
+    def get_by(phone_number: str):
         return clientRead.getByPhone(phone_number)
     
     # ================================= UPDATE =================================

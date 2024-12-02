@@ -1,4 +1,4 @@
-from app.models.orm.client import ClientModel
+from app.models.orm.customer import CustomerModel
 from app import db
 
 from datetime import datetime
@@ -12,7 +12,7 @@ class ClientRepository:
 
         .. versionchanged:: 0.5
         """
-        clientInstance = ClientModel(phone_number=phone_number, status="potential client", created_at=datetime.now())
+        clientInstance = CustomerModel(phone_number=phone_number, status="new client", created_at=datetime.now())
 
         db.session.add(clientInstance)
         db.session.commit()
