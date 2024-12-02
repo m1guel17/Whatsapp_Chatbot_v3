@@ -9,15 +9,18 @@ class ColumnNames:
     LOG_CONTENT = "logContent"
     EXEC_AT = "executedAt"
     EXEC_BY = "executedBy"
+    
+class Status:
+    ACTIVE = "active"
+    CLOSED = "closed"
 
 class ConversationModel(db.Model):
-    __tablename__ = 'chats'
+    __tablename__ = 'conversations'
 
     id = db.Column(db.Integer, primary_key=True)
-    client_id = db.Column(db.Integer)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'), nullable=False)
     status = db.Column(db.String(15), unique=False, nullable=False, default="OPEN")
     currentNode = db.Column(db.String(15), nullable=False, default="100")
     startedAt = db.Column(db.DateTime, default=datetime.now)
-    nextNode = db.Column(db.String(15), nullable=True)
     updatedAt = db.Column(db.DateTime, default=datetime.now)
     isActive = db.Column(db.Boolean, default=True)
