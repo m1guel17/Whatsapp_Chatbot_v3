@@ -10,7 +10,7 @@ class ColumnNames:
     EXEC_AT = "executedAt"
     EXEC_BY = "executedBy"
 
-class ChatModel(db.Model):
+class ConversationModel(db.Model):
     __tablename__ = 'chats'
 
     id = db.Column(db.Integer, primary_key=True)
