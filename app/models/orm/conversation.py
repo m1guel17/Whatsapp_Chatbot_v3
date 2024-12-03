@@ -20,7 +20,7 @@ class ConversationModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'), nullable=False)
     status = db.Column(db.String(15), unique=False, nullable=False, default="OPEN")
-    currentNode = db.Column(db.String(15), nullable=False, default="100")
+    nextNode = db.Column(db.String(15), nullable=False, default="100")
     startedAt = db.Column(db.DateTime, default=datetime.now)
     updatedAt = db.Column(db.DateTime, default=datetime.now)
     isActive = db.Column(db.Boolean, default=True)
