@@ -1,12 +1,12 @@
 from flask import render_template, request, redirect, url_for
 from app.models.orm import *
-from app.services import Client, Message, Raw
+from app.services import Customer, Message, Raw
 from app import db
 
 def tablesRoutes(app):
     @app.route('/')
     def index():
-        clients = Client.get_all()
+        clients = Customer.get_all()
         messages = Message.get_all()
         lasts = Message.fetch_last_msgs()
             

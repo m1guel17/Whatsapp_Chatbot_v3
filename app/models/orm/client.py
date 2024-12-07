@@ -21,4 +21,4 @@ class CustomerModel(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now)
     isActive = db.Column(db.Boolean, default=True)
     
-    conversations = db.relationship('ConversationModel', backref='customer', lazy=True)
+    #conversations = db.relationship('ConversationModel', backref='customer', lazy=True)

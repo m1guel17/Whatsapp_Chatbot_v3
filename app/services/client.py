@@ -10,7 +10,7 @@ from app.interfaces.crud.update.client_repo import ClientRepository as clientUpd
     >Author: Miguel
 """
 
-class Client:
+class Customer:
     # ================================= CREATE =================================
     @staticmethod
     def registerClient(phone_number: str):        
