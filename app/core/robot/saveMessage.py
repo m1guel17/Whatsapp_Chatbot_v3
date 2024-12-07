@@ -36,7 +36,7 @@ def saveText(phone_number: str, content: str): # chatflow mock, pending improvem
                 send_response(plain_txt(phone_number, f"Client status not configured {clientStatus}"))
                 
         if "email" in content.lower():
-            Message.update_by_phone(phone_number, content, "Check email")
+            Message.update_by_phone(phone_number, content)#, "Check email")
             Customer.update_status(phone_number, "email sent")
             notify_owner_about_deal("John Doe", "123456789", os.environ.get('RECEIVER_EMAIL')) # this is just for testing
             
