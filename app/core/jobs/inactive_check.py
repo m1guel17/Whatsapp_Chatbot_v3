@@ -18,9 +18,9 @@ def check_inactive_users(app):
         inactive_clients = CustomerModel.query.filter(CustomerModel.last_interaction <= wait_threshold,  CustomerModel.status != "chat inactive").all()
 
         for client in inactive_clients:
-            refresh = CustomerModel.query.filter(CustomerModel.last_interaction == client.phone_number).order_by(CustomerModel.id.desc()).first() #
-            if refresh.last_interaction > wait_threshold: #
-                continue #
+            # refresh = CustomerModel.query.filter(CustomerModel.last_interaction == client.phone_number).order_by(CustomerModel.id.desc()).first() #
+            # if refresh.last_interaction > wait_threshold: #
+            #     continue #
             
             send_response(plain_txt(client.phone_number, "INACTIVE"))
             client.last_interaction = datetime.now()

@@ -19,7 +19,7 @@ def load_json():
 
 def saveTextNew(phone_number: str, content: str): # chatflow mock, pending improvement
     if Customer.isNew(phone_number):  # checks if number is new client or not
-        Message.registerMsgs(phone_number, content)
+        Message.registerMsgs(phone_number)#, content)
         Customer.registerClient(phone_number)
     else:
         chatFlow = load_json()
