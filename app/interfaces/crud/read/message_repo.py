@@ -33,3 +33,11 @@ class MessageRepository:
         .. versionchanged:: 0.1
         """
         return LastMessageModel.query.all()
+    
+    @staticmethod
+    def getByPhone(phone_number: str):
+        """Gets all the rows in ClientModel.
+        
+        .. versionchanged:: 0.1
+        """
+        return MessagesModel.query.filter_by(phone_number=phone_number).first()

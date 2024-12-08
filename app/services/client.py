@@ -26,7 +26,7 @@ class Customer:
         return clientRead.get_all()
     
     @staticmethod
-    def get_one(phone_number: str):
+    def get_by(phone_number: str):
         return clientRead.getByPhone(phone_number)
     
     # ================================= UPDATE =================================

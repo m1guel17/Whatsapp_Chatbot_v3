@@ -14,7 +14,7 @@ def saveText(phone_number: str, content: str): # chatflow mock, pending improvem
         send_response(plain_txt(phone_number, "welcome")) # replace with custom welcome message
         
     else:
-        clientStatus = Customer.get_one(phone_number).status
+        clientStatus = Customer.get_by(phone_number).status
         
         match clientStatus:
             case "potential client":

@@ -24,7 +24,7 @@ def send_response(data):
         connection.request("POST", WHATSAPP_API.REQUEST, data_, headers)
         response = connection.getresponse()
         print(response.status, response.reason)
-        Message.update_in_and_out(data["to"], "response sent")
+        #Message.update_in_and_out(data["to"], "response sent")
         
     except Exception as e:
         print(e)

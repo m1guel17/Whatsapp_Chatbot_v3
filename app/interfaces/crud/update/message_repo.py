@@ -3,6 +3,8 @@ from app.models.orm.message import LastMessageModel
 from app import db
 
 from datetime import datetime
+import json
+import os
 
 class MessageRepository:
     @staticmethod
@@ -18,7 +20,15 @@ class MessageRepository:
         sentAt = datetime.now()
         
         lastChat_ = MessagesModel.query.filter_by(phone_number=phone_number).order_by(MessagesModel.id.desc()).first()
-        MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt, chat=lastChat_.chat+1)
+        
+        current_dir = os.path.dirname(__file__)
+        json_path = os.path.join(current_dir, '..', '..', '..', 'core', 'json', 'chatflowv1.json')
+        json_path = os.path.normpath(json_path)
+        with open(json_path, 'r', encoding='utf-8') as f:
+            CHATFLOW = json.load(f)
+        nextNode = CHATFLOW["nodes"].get(lastChat_.node)["next"]["default"]
+        
+        MessageInstance = MessagesModel(phone_number=phone_number, content=content, sent_at=sentAt, chat=lastChat_.chat+1, node = nextNode)
         
         lastMessageInstance = LastMessageModel.query.filter_by(phone_number=phone_number).first()
         lastMessageInstance.content = content

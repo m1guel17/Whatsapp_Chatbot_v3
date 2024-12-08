@@ -17,6 +17,7 @@
             <th>Numero</th>
             <th>Mensaje</th>
             <th>Tipo</th>
+            <th>Nodo</th>
             <th>Fecha y Hora</th>
         </tr>
         {%for registro in registros %}
@@ -26,6 +27,7 @@
                 <td>{{registro.phone_number}}</td>
                 <td>{{registro.content}}</td>
                 <td>{{registro.message_type}}</td>
+                <td>{{registro.node}}</td>
                 <td>{{registro.sent_at}}</td>
             </tr>
             {% endfor %}

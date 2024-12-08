@@ -24,7 +24,7 @@ def saveTextNew(phone_number: str, content: str): # chatflow mock, pending impro
     else:
         chatFlow = load_json()
         
-        clientStatus = Customer.get_one(phone_number).status
+        clientStatus = Customer.get_by(phone_number).status
         
         filtered_nodes = {node_id: node for node_id, node in chatFlow["nodes"].items() if node.get("status") == clientStatus}
         

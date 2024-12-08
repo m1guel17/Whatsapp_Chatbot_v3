@@ -26,6 +26,10 @@ class Message:
         return msgRead.get_all()
     
     @staticmethod
+    def get_by(phone_number: str):
+        return msgRead.getByPhone(phone_number)
+    
+    @staticmethod
     def fetch_last_msgs():
         return msgRead.fetch_last()
 
