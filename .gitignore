@@ -10,3 +10,4 @@ app/stack/constant/messages_draft.py
 test.py
 app/core/json/*
 !app/core/json/chatflowv1.json
+!app/core/json/chatflowv2.json

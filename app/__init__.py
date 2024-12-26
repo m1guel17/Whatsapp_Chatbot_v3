@@ -15,7 +15,7 @@ def create_app():
         Routes(app)
         
         db.create_all()
-        inactivity_schedule(app)
+        # inactivity_schedule(app)
         # ping_scheduler(app) # scheduler for ping to the domain
 
     return app

@@ -16,7 +16,7 @@ class MessageRepository:
         """
         sentAt = datetime.now()
         
-        messageInstance = MessagesModel(phone_number=phone_number, content="start_of_chat", chat=1, sent_at=sentAt, node="100")
+        messageInstance = MessagesModel(phone_number=phone_number, content=content, chat=1, sent_at=sentAt, node="100")
         lastmessageInstance = LastMessageModel(phone_number=phone_number, content=content, sent_at=sentAt, status="new chat")
         
         db.session.add_all([messageInstance, lastmessageInstance])

@@ -1,0 +1,140 @@
+{
+	"nodes": {
+		"100": {
+			"payload":{
+				"type": "text",
+				"text": {
+					"preview_url": false,
+					"body": "MENSAJE BIENVENIDA"
+			}
+			},
+			"next": {
+				"default": "101"
+			}
+		},
+		"101": {
+			"payload":{
+				"type": "text",
+				"text": {
+					"preview_url": false,
+					"body": "LINK DE PÁGINA WEB"
+				}
+			}
+			,
+			"next": {
+				"default": "102"
+			}
+		},
+		"102": {
+			"payload":{
+				"type": "text",
+				"text": {
+					"preview_url": false,
+					"body": "RESUMEN DE COMPRA"
+				}
+			},
+			"next": {
+				"default": "103"
+			}
+		},
+		"103": {
+			"payload":{
+				"type": "interactive",
+				"interactive": {
+					"type": "button",
+					"body": {
+						"text": "Escoja método de pago"
+					},
+					"action": {
+						"buttons": [
+							{
+								"type": "reply",
+								"reply": {
+									"id": "<UNIQUE_BUTTON_ID_1>",
+									"title": "<BUTTON_TITLE_1>"
+								}
+							},
+							{
+								"type": "reply",
+								"reply": {
+									"id": "104",
+									"title": "Yape"
+								}
+							},
+							{
+								"type": "reply",
+								"reply": {
+									"id": "105",
+									"title": "Transferencia"
+								}
+							}
+						]
+					}
+				}
+			},
+			"alt": {
+				"alternatives": ["Yape", "Transferencia"]
+			}
+		},
+		"104": {
+			"payload":{
+				"type": "text",
+				"text": {
+					"preview_url": false,
+					"body": "DATOS DE YAPE"
+				}
+			},
+			"next": {
+				"default": "106"
+			}
+		},
+		"105": {
+			"payload":{
+				"type": "text",
+				"text": {
+					"preview_url": false,
+					"body": "DATOS DE TRANSFERENCIA"
+				}
+			},
+			"next": {
+				"default": "106"
+			}
+		},
+		"106": {
+			"payload":{
+				"type": "text",
+				"text": {
+					"preview_url": false,
+					"body": "RECIBIMOS LA IMAGEN, POR FAVOR DEJA TU INFORMACIÓN:\nINDIQUE SU INFORMACIÓN PARA EL ENVÍO\n1. DIRECCIÓN\n2. REFERENCIA\n3. CONSIDERACIONES\nCUANDO TERMINE DE ENVIAR SU INFORMACIÓN ESCRIBA 'PEDIR'"
+				}
+			},
+			"next": {
+				"default": "107"
+			}
+		},
+		"107": {
+			"payload":{
+				"type": "text",
+				"text": {
+					"preview_url": false,
+					"body": "GRACIAS POR REALIZAR TU COMPRA, EN UNOS MINUTOS UN AGENTE SE COMUNICARÁ CONTIGO PARA REALIZAR EL SEGUIMIENTO."
+				}
+			},
+			"next": {
+				"default": "108"
+			}
+		},
+		"108": {
+			"payload":{
+				"type": "text",
+				"text": {
+					"preview_url": false,
+					"body": "END"
+				}
+			},
+			"next": {
+				"default": "100"
+			}
+		}
+	}
+}
