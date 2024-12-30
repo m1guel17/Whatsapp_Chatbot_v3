@@ -1,5 +1,17 @@
 
-def plain_txt(phone_number, message):
+def plain_txt(phone_number, payload):
+    msg = {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": phone_number,
+        "text": {
+            "preview_url": payload["text"]["preview_url"],
+            "body": payload["text"]["body"]
+        }
+    }
+    return msg
+
+def plain_txtOld(phone_number, message):
     msg = {
         "messaging_product": "whatsapp",
         "recipient_type": "individual",

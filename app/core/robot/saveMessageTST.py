@@ -30,6 +30,11 @@ def saveText(phone_number: str, content: str): # chatflow mock, pending improvem
     
     
     
+    if "email" in content.lower():
+        Message.update_by_phone(phone_number, content)#, "Check email")
+        Customer.update_status(phone_number, "email sent")
+        notify_owner_about_deal("John Doe", "123456789", os.environ.get('RECEIVER_EMAIL')) # this is just for testing
+            
 
     # match Customer.isNew(phone_number):  # checks if number is new client or not
     #     case True:
@@ -69,10 +74,5 @@ def saveText(phone_number: str, content: str): # chatflow mock, pending improvem
     #     case _:
     #         Message.update_by_phone(phone_number, content)
     #         send_response(plain_txt(phone_number, f"Client status not configured {clientStatus}"))
-            
-    if "email" in content.lower():
-        Message.update_by_phone(phone_number, content)#, "Check email")
-        Customer.update_status(phone_number, "email sent")
-        notify_owner_about_deal("John Doe", "123456789", os.environ.get('RECEIVER_EMAIL')) # this is just for testing
             
                 
