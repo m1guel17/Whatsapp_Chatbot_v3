@@ -35,7 +35,7 @@ def receive_message(req_data):
                             #Message.registerMsgs(phone_number, content)
                             saveText(phone_number, content)
                             
-                    if "text" in messages:
+                    if type == "text":
                         content = messages["text"]["body"]
                         phone_number = messages["from"]
                         #Message.registerMsgs(phone_number, content)

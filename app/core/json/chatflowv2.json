@@ -50,13 +50,6 @@
 							{
 								"type": "reply",
 								"reply": {
-									"id": "<UNIQUE_BUTTON_ID_1>",
-									"title": "<BUTTON_TITLE_1>"
-								}
-							},
-							{
-								"type": "reply",
-								"reply": {
 									"id": "104",
 									"title": "Yape"
 								}
