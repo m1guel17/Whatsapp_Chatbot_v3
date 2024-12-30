@@ -17,29 +17,16 @@ def get_response_from_node(node):
     
     if payload["type"] == "text":
         nodetype = payload["type"]
-        # payload = {
-        #     "type": CHATFLOW["type"],
-        #     "preview_url": CHATFLOW["text"]["preview_url"],
-        #     "body": CHATFLOW["text"]["body"]
-        #     }
+        
     else:
-        nodetype = "!text"
+        nodetype = payload["type"]
         nextNode = "100"
         payload = {
                 "type": "text",
-                "text": {
-                    "preview_url": False,
-                    "body": "not text, back to 100"
-                    }
+				"text": {
+					"preview_url": False,
+					"body": "FIN"
+				    }
                 }
-        
-        # nextNode = "!text"
-
-        # buttons = CHATFLOW["interactive"]["action"]["buttons"]
-        # payload = {
-        #     "type": "interactive",
-        #     "body": CHATFLOW["interactive"]["body"]["text"],
-        #     "buttons": [btn["reply"]["title"] for btn in buttons]
-        # }
     
     return nodetype, nextNode, payload
