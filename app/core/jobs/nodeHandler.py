@@ -11,6 +11,11 @@ def get_response_from_node(node):
         
     nodeObject = chatflowObject["nodes"].get(node)
     
+    type_ = getNodeObjectType(nodeObject, node)
+    
+    
+    
+    
     nextNode = nodeObject["next"]["default"]
     payload = nodeObject["payload"]
     
@@ -30,3 +35,7 @@ def get_response_from_node(node):
                 }
     
     return nodetype, nextNode, payload
+
+def getNodeObjectType(Object):
+    nodeObjectType = Object["payload"]["type"]
+    return nodeObjectType

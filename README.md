@@ -1,7 +1,9 @@
 # Whatsapp_Chatbot_v3
 This repository hosts a Python-based chatbot demo that integrates with the WhatsApp Business API (Meta API) to facilitate automated messaging and interactions within a WhatsApp Business test environment.  
 
-__Please note that the chatflow conversation must be managed from ~within the code~ a json file, as this repository does not include the module to configure the conversation flow through block diagrams in the frontend.... just yet.__
+> [!IMPORTANT]
+> Please note that the chatflow conversation must be managed from ~within the code~ a json file, as this repository does not include the module to configure the conversation flow through block diagrams in the frontend... just yet.
+> 
 
 # Features
 - **WhatsApp Business Integration**: Seamless integration with the WhatsApp Business API for message handling.
