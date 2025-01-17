@@ -6,7 +6,7 @@
 				"text": {
 					"preview_url": false,
 					"body": "MENSAJE BIENVENIDA"
-			}
+				}
 			},
 			"next": {
 				"default": "101"

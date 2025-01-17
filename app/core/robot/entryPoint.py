@@ -23,22 +23,17 @@ def receive_message(req_data):
 
                         if interactive_type == "button_reply":
                             content = messages["interactive"]["button_reply"]["id"]
-                            title = messages["interactive"]["button_reply"]["title"]
                             phone_number = messages["from"]
-                            #Message.registerMsgs(phone_number, content)
                             saveText(phone_number, content)
                             
                         elif interactive_type == "list_reply":
                             content = messages["interactive"]["list_reply"]["id"]
-                            title = messages["interactive"]["list_reply"]["title"]
                             phone_number = messages["from"]
-                            #Message.registerMsgs(phone_number, content)
                             saveText(phone_number, content)
                             
                     if type == "text":
                         content = messages["text"]["body"]
                         phone_number = messages["from"]
-                        #Message.registerMsgs(phone_number, content)
                         saveText(phone_number, content)
             
             
